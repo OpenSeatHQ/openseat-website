@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OpenSeat Terms of Service - Read our terms for event organizers and ticket buyers.">
+    <title>Terms of Service - OpenSeat</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2D7A3E;
+            --primary-dark: #1F5229;
+            --primary-light: #E8F5E9;
+            --text: #0F172A;
+            --text-secondary: #64748B;
+            --muted: #64748B;
+            --bg: #FFFFFF;
+            --bg-alt: #F8FAFC;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Content */
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 1.5rem 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tab Buttons */
+        .tos-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tos-tab-btn {
+            padding: 1rem 2rem;
+            background: var(--bg-alt);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .tos-tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tos-tab-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Tab Content */
+        .tos-content {
+            display: none;
+        }
+
+        .tos-content.active {
+            display: block;
+        }
+
+        .tos-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: var(--text);
+        }
+
+        .tos-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        .tos-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .tos-content ul, .tos-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .tos-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tos-content strong {
+            color: var(--text);
+        }
+
+        .effective-date {
+            background: var(--bg-alt);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            color: var(--text);
+            padding: 3.5rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand img {
+            height: 32px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.625rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-alt);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-section h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .tos-tabs {
+                flex-direction: column;
+            }
+
+            .tos-tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#organizers">For Organizers</a></li>
+                <li><a href="index.html#attendees">For Attendees</a></li>
+                <li><a href="index.html#how">How It Works</a></li>
+                <li><a href="mailto:contact@openseat.cc" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="page-content">
+        <div class="page-header">
+            <h1>Terms of Service</h1>
+            <p>At OpenSeat, we want our policies to be easy to understand. Because organizers and ticket buyers use our platform in different ways, we provide separate Terms of Service.</p>
+        </div>
+
+        <div class="tos-tabs">
+            <button class="tos-tab-btn active" onclick="showTab('organizer')">Organizer Terms of Service</button>
+            <button class="tos-tab-btn" onclick="showTab('buyer')">Ticket Buyer Terms of Service</button>
+        </div>
+
+        <!-- Organizer Terms -->
+        <div id="organizer" class="tos-content active">
+            <div class="effective-date">
+                <strong>Effective Date:</strong> November 11, 2025<br>
+                <strong>Last Updated:</strong> November 11, 2025
+            </div>
+
+            <p>Thank you for choosing OpenSeat! These Organizer Terms of Service ("Terms") form a legally binding agreement between <strong>you</strong> ("Organizer," "you," or "your") and <strong>OpenSeat LLC</strong> ("OpenSeat," "we," "us," or "our"). These Terms apply when you use OpenSeat to create, promote, or manage events and to sell tickets through our platform (the "Platform").</p>
+            <p>By creating an event or accessing any organizer tools, you agree to these Terms.</p>
+
+            <h2>1. Who Can Use OpenSeat as an Organizer</h2>
+            <p>To use OpenSeat as an Organizer, you confirm that:</p>
+            <ul>
+                <li>You are at least 18 years old.</li>
+                <li>You have the legal authority to create and manage the event.</li>
+                <li>If acting on behalf of a venue, business, or promoter, you're authorized to represent that entity.</li>
+                <li>Your event follows all applicable laws, safety rules, and permit requirements.</li>
+            </ul>
+
+            <h2>2. Our Relationship With You</h2>
+            <p>OpenSeat is <strong>not</strong> an event organizer, producer, or venue operator.</p>
+            <ul>
+                <li><strong>You</strong> are fully responsible for the events you create.</li>
+                <li>OpenSeat simply provides the technology to help you sell tickets.</li>
+                <li>Ticket buyers purchase tickets <strong>from you, not from OpenSeat</strong>.</li>
+            </ul>
+            <p>We are not responsible for the event's content, safety, organization, or overall experience.</p>
+
+            <h2>3. Fees, Payments & Payouts</h2>
+            <h3>3.1 Organizer Fees</h3>
+            <p>Organizer fees are not fixed and may vary by venue or event. We will agree to fees with you <strong>in writing</strong> (e.g., by email or contract).</p>
+            <h3>3.2 Buyer Fees</h3>
+            <p>OpenSeat may charge service fees to ticket buyers. These appear clearly at checkout and are added on top of the ticket price.</p>
+            <h3>3.3 Payouts</h3>
+            <p>All payouts are handled directly by <strong>Stripe</strong>.</p>
+            <ul>
+                <li>OpenSeat does <strong>not</strong> hold your money.</li>
+                <li>Funds flow from Stripe to your registered account.</li>
+                <li>You must maintain a valid, verified Stripe account.</li>
+            </ul>
+            <p>Any payout delays or holds are controlled by Stripe.</p>
+
+            <h2>4. Refunds, Chargebacks & Cancellations</h2>
+            <h3>4.1 Refunds</h3>
+            <p>You, the Organizer, are responsible for issuing refunds. OpenSeat does not refund buyers on your behalf.</p>
+            <h3>4.2 Refund Policy for Active Events</h3>
+            <p>For events that are not canceled, you may set your own refund policy, as long as:</p>
+            <ul>
+                <li>It is displayed on your event page, and</li>
+                <li>It follows applicable laws.</li>
+            </ul>
+            <h3>4.3 Chargebacks</h3>
+            <p>You are responsible for chargebacks and any financial losses resulting from them. Stripe may invoice OpenSeat for a chargeback, and if so, we will invoice you.</p>
+            <h3>4.4 Event Cancellations</h3>
+            <p>If your event is canceled, postponed, or materially changed:</p>
+            <ul>
+                <li>You must notify attendees.</li>
+                <li>You must issue refunds accordingly.</li>
+                <li>You are responsible for any claims arising from the cancellation.</li>
+            </ul>
+
+            <h2>5. Your Responsibilities as an Organizer</h2>
+            <p>You are solely responsible for:</p>
+            <ul>
+                <li>Event safety and security</li>
+                <li>Venue compliance with legal and regulatory requirements</li>
+                <li>Obtaining permits and licenses</li>
+                <li>Enforcing age restrictions and alcohol laws</li>
+                <li>Accurate event descriptions</li>
+                <li>Providing customer support for the event</li>
+                <li>Handling attendee disputes</li>
+                <li>Ensuring your QR code scanning / entry process works smoothly</li>
+                <li>Complying with privacy laws when contacting attendees</li>
+            </ul>
+
+            <h2>6. Your Content & Intellectual Property</h2>
+            <h3>6.1 Your Ownership</h3>
+            <p>You retain ownership of all text, images, logos, and other content you upload ("Organizer Content").</p>
+            <h3>6.2 License to OpenSeat</h3>
+            <p>You grant us permission to:</p>
+            <ul>
+                <li>Display your content on event pages</li>
+                <li>Host and distribute it as needed</li>
+                <li>Use it in promotional materials for your event</li>
+                <li>Feature it in OpenSeat marketing (e.g., portfolio examples)</li>
+            </ul>
+            <h3>6.3 Prohibited Content</h3>
+            <p>You may not upload content that is:</p>
+            <ul>
+                <li>Illegal</li>
+                <li>Defamatory or misleading</li>
+                <li>Infringing on third-party rights</li>
+                <li>Promoting harmful or unsafe activity</li>
+            </ul>
+            <p>We may remove harmful or illegal content at our discretion.</p>
+
+            <h2>7. Prohibited Events</h2>
+            <p>You may not create events that involve:</p>
+            <ul>
+                <li>Illegal activities</li>
+                <li>Hate speech, violence, or discrimination</li>
+                <li>Unlicensed gambling</li>
+                <li>Unreasonable safety risks</li>
+                <li>Violations of local laws</li>
+            </ul>
+            <p>We may suspend or remove such events without notice.</p>
+
+            <h2>8. Use of Ticket Buyer Phone Numbers</h2>
+            <p>OpenSeat collects buyer phone numbers <strong>only</strong> to help them:</p>
+            <ul>
+                <li>Verify their account</li>
+                <li>Access their tickets</li>
+                <li>Log into the mobile app</li>
+                <li>Receive essential service or security notices</li>
+            </ul>
+            <p>We do <strong>not</strong> use buyer phone numbers for marketing, advertising, or promotional SMS.</p>
+            <p>We do not sell or share buyer phone numbers with third parties for marketing.</p>
+
+            <h2>9. Suspension & Termination</h2>
+            <p>OpenSeat may suspend or terminate your Organizer access if you:</p>
+            <ul>
+                <li>Violate these Terms</li>
+                <li>Create unsafe or fraudulent events</li>
+                <li>Accumulate excessive chargebacks</li>
+                <li>Fail to honor your refund obligations</li>
+                <li>Abuse or misuse the Platform</li>
+            </ul>
+            <p>You remain responsible for refunds and pending obligations even after termination.</p>
+
+            <h2>10. Indemnification</h2>
+            <p>You agree to protect and indemnify OpenSeat from any claims, costs, or damages arising out of:</p>
+            <ul>
+                <li>Your events</li>
+                <li>Injuries or incidents at your events</li>
+                <li>Intellectual property issues</li>
+                <li>Refund failures</li>
+                <li>Chargebacks</li>
+                <li>Regulatory or legal violations</li>
+                <li>Your breach of these Terms</li>
+            </ul>
+
+            <h2>11. Limitation of Liability</h2>
+            <p>To the fullest extent allowed by law:</p>
+            <ul>
+                <li>OpenSeat is not liable for indirect, incidental, or consequential damages.</li>
+                <li>Our maximum liability is limited to the fees paid by you to OpenSeat in the past 12 months.</li>
+            </ul>
+
+            <h2>12. Governing Law</h2>
+            <p>These Terms are governed by the laws of the <strong>State of Washington</strong>.</p>
+            <p>All disputes must be handled in the state or federal courts of <strong>Clark County, Washington</strong>.</p>
+
+            <h2>13. Contact Us</h2>
+            <p>If you have any questions about these Terms, you can reach us at <a href="mailto:contact@openseat.cc">contact@openseat.cc</a></p>
+        </div>
+
+        <!-- Ticket Buyer Terms -->
+        <div id="buyer" class="tos-content">
+            <div class="effective-date">
+                <strong>Effective Date:</strong> November 11, 2025<br>
+                <strong>Last Updated:</strong> November 11, 2025
+            </div>
+
+            <p>Welcome to OpenSeat! These Ticket Buyer Terms of Service ("Terms") form a legally binding agreement between <strong>you</strong> ("Buyer," "you," or "your") and <strong>OpenSeat LLC</strong> ("OpenSeat," "we," "us," or "our"). These Terms apply whenever you purchase, access, or use a ticket through our platform (the "Platform"), whether on our website or mobile app.</p>
+            <p>By purchasing or using a ticket through OpenSeat, you agree to these Terms.</p>
+
+            <h2>1. OpenSeat's Role</h2>
+            <p>OpenSeat is <strong>not</strong> the organizer, promoter, or operator of events.</p>
+            <ul>
+                <li>Tickets listed on OpenSeat are sold by <strong>independent event organizers</strong> ("Organizers").</li>
+                <li>When you buy a ticket, your contract is <strong>with the Organizer</strong>, not OpenSeat.</li>
+                <li>OpenSeat simply provides the technology that allows you to view events and purchase digital tickets.</li>
+            </ul>
+            <p>We are not responsible for the event's quality, safety, schedule, or overall experience.</p>
+
+            <h2>2. Buying Tickets & Accessing Them</h2>
+            <p>You can purchase tickets in two ways:</p>
+            <h3>2.1 Purchasing on the Web (No Account Required at Checkout)</h3>
+            <p>If you buy a ticket through the web checkout:</p>
+            <ul>
+                <li>You must provide a valid <strong>email address</strong> and <strong>phone number</strong>.</li>
+                <li>Your ticket will be linked to these identifiers.</li>
+                <li>To view your ticket in the mobile app, you will later create an account using the <strong>same email and phone number</strong>.</li>
+            </ul>
+            <p>Your information is securely stored, but a full account is created only when you log into the app.</p>
+            <h3>2.2 Purchasing in the Mobile App</h3>
+            <p>If you already have an OpenSeat account, you can purchase tickets directly in the app.</p>
+            <h3>2.3 Ticket Delivery</h3>
+            <p>All tickets are delivered digitally. You access them in the OpenSeat mobile app after logging in.</p>
+
+            <h2>3. How We Use Your Phone Number</h2>
+            <p>Your phone number is used <strong>only for essential purposes</strong>, including:</p>
+            <ul>
+                <li>Account creation</li>
+                <li>Login and identity verification</li>
+                <li>Access to your tickets</li>
+                <li>Security or service alerts related to your purchase</li>
+            </ul>
+            <p><strong>We will never use your phone number for marketing or promotional SMS.</strong></p>
+
+            <h2>4. Email Communications</h2>
+            <p>We may send you emails for:</p>
+            <ul>
+                <li>Purchase receipts</li>
+                <li>Ticket delivery</li>
+                <li>Event updates, cancellations, or changes</li>
+                <li>Account notifications</li>
+                <li>Security alerts</li>
+            </ul>
+            <p><strong>Marketing emails are sent only if you explicitly opt in.</strong> You can unsubscribe anytime.</p>
+
+            <h2>5. Payments</h2>
+            <p>All payments are securely processed by <strong>Stripe</strong>.</p>
+            <ul>
+                <li>OpenSeat does not store your payment card details.</li>
+                <li>Stripe may offer you the option to save your card through Link (Stripe's secure service).</li>
+                <li>Your purchase is subject to Stripe's own terms and privacy policy.</li>
+            </ul>
+
+            <h2>6. Ticket Rules</h2>
+            <h3>6.1 No Transfers or Resales</h3>
+            <p>Tickets purchased through OpenSeat:</p>
+            <ul>
+                <li>Cannot be transferred</li>
+                <li>Cannot be resold</li>
+                <li>Cannot be exchanged</li>
+            </ul>
+            <p>Organizers may deny entry if you attempt to use a transferred or resold ticket.</p>
+            <h3>6.2 QR Code Security</h3>
+            <p>Your ticket includes a QR code. Make sure you:</p>
+            <ul>
+                <li>Keep it private</li>
+                <li>Avoid sharing screenshots</li>
+                <li>Protect your device</li>
+            </ul>
+            <p>If someone else accesses your code, they may gain entry before you. Only the first valid scan is honored.</p>
+
+            <h2>7. Refunds, Cancellations & Event Issues</h2>
+            <h3>7.1 Organizer Controls Refunds</h3>
+            <p>Refunds are handled <strong>directly by the Organizer</strong>, not OpenSeat.</p>
+            <p>OpenSeat does not:</p>
+            <ul>
+                <li>Make refund decisions</li>
+                <li>Process refunds on your behalf</li>
+                <li>Hold funds from ticket sales</li>
+            </ul>
+            <h3>7.2 Refund Policy for Active Events</h3>
+            <p>Refund rules are set by the Organizer and displayed on the event page. By buying a ticket, you accept that policy.</p>
+            <h3>7.3 Cancellations or Major Changes</h3>
+            <p>If an event is canceled, postponed, or materially changed:</p>
+            <ul>
+                <li>The Organizer is responsible for notifying you.</li>
+                <li>The Organizer must issue refunds as required.</li>
+                <li>OpenSeat is not responsible for the refund amount or timeline.</li>
+            </ul>
+            <h3>7.4 Chargebacks</h3>
+            <p>If you dispute a payment with your bank:</p>
+            <ul>
+                <li>The Organizer is responsible for the financial impact.</li>
+                <li>Access to your ticket may be paused until the dispute is resolved.</li>
+            </ul>
+
+            <h2>8. Behavior at Events</h2>
+            <p>When attending an event, you must follow:</p>
+            <ul>
+                <li>Venue rules</li>
+                <li>Organizer policies</li>
+                <li>Age restrictions</li>
+                <li>Local laws</li>
+                <li>Safety requirements</li>
+            </ul>
+            <p>Organizers or venues may deny entry or remove attendees for:</p>
+            <ul>
+                <li>Unsafe behavior</li>
+                <li>Intoxication</li>
+                <li>Rule violations</li>
+                <li>Security concerns</li>
+            </ul>
+            <p>OpenSeat is not responsible for entry decisions.</p>
+
+            <h2>9. Your License to Use the Ticket</h2>
+            <p>When you buy a ticket, you receive a <strong>limited, revocable license</strong> to attend the event. This license may be revoked by the Organizer if:</p>
+            <ul>
+                <li>You violate event rules</li>
+                <li>You engage in misconduct</li>
+                <li>Fraud is suspected</li>
+                <li>The ticket was transferred or resold</li>
+                <li>Entry is restricted by law</li>
+            </ul>
+
+            <h2>10. Acceptable Use of the Platform</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Interfere with the app or website</li>
+                <li>Try to bypass security features</li>
+                <li>Attempt to copy or manipulate QR codes</li>
+                <li>Use bots, scrapers, or automated tools</li>
+                <li>Create fake accounts</li>
+                <li>Engage in fraudulent activity</li>
+            </ul>
+            <p>Violations may result in ticket invalidation or account suspension.</p>
+
+            <h2>11. Limitation of Liability</h2>
+            <p>To the fullest extent allowed by law:</p>
+            <ul>
+                <li>OpenSeat is not responsible for event conditions, schedule changes, content, or safety.</li>
+                <li>We are not liable for travel costs, loss of enjoyment, or indirect damages.</li>
+                <li>Our maximum liability is limited to the fees you paid to OpenSeat, not the ticket price (which goes to the Organizer).</li>
+            </ul>
+
+            <h2>12. Governing Law</h2>
+            <p>These Terms are governed by the laws of the <strong>State of Washington</strong>.</p>
+            <p>Any disputes must be handled in the state or federal courts located in <strong>Clark County, Washington</strong>.</p>
+
+            <h2>13. Contact Us</h2>
+            <p>If you need help with your tickets or have questions about these Terms, you can reach us at <a href="mailto:contact@openseat.cc">contact@openseat.cc</a></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+                <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
+                <div class="social-links">
+                    <a href="https://twitter.com/openseat" aria-label="Twitter">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/openseat" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/openseat" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#organizers">For Organizers</a></li>
+                    <li><a href="index.html#attendees">For Attendees</a></li>
+                    <li><a href="index.html#how">How It Works</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:contact@openseat.cc">contact@openseat.cc</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 OpenSeat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all content
+            document.querySelectorAll('.tos-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active from all buttons
+            document.querySelectorAll('.tos-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+            // Add active to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+

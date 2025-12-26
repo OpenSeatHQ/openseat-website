@@ -103,12 +103,11 @@
         .hero-wrapper {
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
         }
 
         .hero {
             position: relative;
-            padding: 8rem 1.5rem 6rem;
+            padding: 8rem 1.5rem 3rem;
             max-width: 1280px;
             margin: 0 auto;
             text-align: center;
@@ -126,17 +125,11 @@
 
         .floating-screenshot {
             position: absolute;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        .floating-screenshot img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .floating-screenshot .phone-frame {
+            max-width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         .floating-screenshot.left-top {
@@ -144,7 +137,7 @@
             top: 12%;
             left: -2%;
             transform: rotate(-8deg);
-            opacity: 0.9;
+            z-index: 1;
         }
 
         .floating-screenshot.left-bottom {
@@ -152,7 +145,7 @@
             bottom: 8%;
             left: 2%;
             transform: rotate(6deg);
-            opacity: 0.85;
+            z-index: 2;
         }
 
         .floating-screenshot.right-top {
@@ -160,7 +153,6 @@
             top: 8%;
             right: -3%;
             transform: rotate(10deg);
-            opacity: 0.9;
         }
 
         @media (max-width: 1200px) {
@@ -284,7 +276,7 @@
 
         /* Problem/Solution Section */
         .problem-section {
-            padding: 5rem 1.5rem;
+            padding: 3rem 1.5rem 5rem;
             background: var(--bg);
         }
 
@@ -491,35 +483,34 @@
             max-width: 280px;
             margin: 0 auto;
             background: #1a1a1a;
-            border-radius: 40px;
-            padding: 12px;
+            border-radius: 28px;
+            padding: 6px;
             box-shadow: 
                 0 25px 50px -12px rgba(0, 0, 0, 0.25),
-                inset 0 0 0 2px #333,
-                inset 0 0 0 4px #1a1a1a;
+                inset 0 0 0 1px #333;
         }
 
         .phone-frame::before {
             content: '';
             position: absolute;
-            top: 12px;
+            top: 6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 24px;
+            width: 60px;
+            height: 16px;
             background: #1a1a1a;
-            border-radius: 0 0 16px 16px;
+            border-radius: 0 0 12px 12px;
             z-index: 10;
         }
 
         .phone-frame::after {
             content: '';
             position: absolute;
-            top: 18px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background: #333;
             border-radius: 50%;
             z-index: 11;
@@ -527,7 +518,7 @@
 
         .phone-screen {
             position: relative;
-            border-radius: 28px;
+            border-radius: 22px;
             overflow: hidden;
             background: #000;
         }
@@ -561,6 +552,25 @@
         .platform-card:hover {
             border-color: var(--primary);
             box-shadow: 0 12px 40px rgba(45, 122, 62, 0.1);
+        }
+
+        .platform-card.pulse {
+            animation: cardPulse 0.6s ease-out;
+        }
+
+        @keyframes cardPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(45, 122, 62, 0.4);
+                border-color: var(--primary);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(45, 122, 62, 0);
+                border-color: var(--primary);
+            }
+            100% {
+                box-shadow: 0 12px 40px rgba(45, 122, 62, 0.1);
+                border-color: var(--primary);
+            }
         }
 
         .platform-card-header {
@@ -686,47 +696,226 @@
         .how-section {
             padding: 5rem 1.5rem;
             background: var(--bg-alt);
+            overflow: hidden;
+        }
+
+        .steps-container {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 0;
         }
 
         .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            display: flex;
+            gap: 0;
+            position: relative;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem 0;
+            justify-content: center;
         }
 
-        .step-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            background: white;
-            border-radius: 16px;
-            border: 1px solid var(--border);
+        .steps-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 1200px) {
+            .step-card-wrapper {
+                flex: 0 0 auto;
+                width: calc(25% - 3rem);
+                min-width: 220px;
+            }
+        }
+
+        .step-card-wrapper {
+            flex: 0 0 260px;
+            height: 200px;
+            perspective: 1000px;
             position: relative;
+            scroll-snap-align: start;
+            margin-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        .step-card-wrapper:last-child {
+            margin-right: 0;
+        }
+
+        .step-card-wrapper::after {
+            content: '';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            z-index: 20;
+        }
+
+        .step-card-wrapper::before {
+            content: '→';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 700;
+            z-index: 21;
+            width: 24px;
+            text-align: center;
+        }
+
+        .step-card-wrapper:last-child::after,
+        .step-card-wrapper:last-child::before {
+            display: none;
+        }
+
+        .step-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .step-card-wrapper.flipped .step-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .step-card-front,
+        .step-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .step-card-front {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+
+        .step-card-wrapper:hover .step-card-front {
+            border-color: var(--primary);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-card-back {
+            transform: rotateY(180deg);
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .step-card-back::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .step-card-back-content {
+            position: relative;
+            z-index: 1;
+            padding: 1.25rem;
+            color: white;
+        }
+
+        .step-card-back-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+
+        .step-card-back-content p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 0 auto 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(45, 122, 62, 0.3);
         }
 
-        .step-card h3 {
-            font-size: 1.15rem;
+        .step-card-front h3 {
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
-        .step-card p {
+        .step-card-front p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.45;
+            flex-grow: 1;
+        }
+
+        .flip-hint {
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .flip-hint svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
         }
 
         /* CTA Section */
@@ -780,7 +969,7 @@
             max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 2.5rem;
             margin-bottom: 2.5rem;
         }
@@ -886,7 +1075,13 @@
             }
 
             .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                padding-left: 0;
+            }
+
+            .step-card-wrapper {
+                flex: 0 0 240px;
             }
 
             .footer-content {
@@ -924,7 +1119,20 @@
             }
 
             .steps-grid {
-                grid-template-columns: 1fr;
+                flex-wrap: nowrap;
+                padding: 0.5rem 1rem 1rem;
+                justify-content: flex-start;
+            }
+
+            .step-card-wrapper {
+                flex: 0 0 220px;
+                height: 190px;
+                margin-right: 1.5rem;
+            }
+
+            .step-card-wrapper::after,
+            .step-card-wrapper::before {
+                display: none;
             }
 
             .footer-content {
@@ -956,8 +1164,8 @@
     <!-- Nav -->
     <nav>
         <div class="nav-content">
-            <a href="#" class="logo">
-                <img src="assets/images/Official_Alternate.png" alt="OpenSeat">
+            <a href="index.html" class="logo">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
@@ -974,13 +1182,25 @@
     <div class="hero-wrapper">
         <div class="hero-floating-screenshots">
             <div class="floating-screenshot left-top">
-                <img src="assets/images/Home.png" alt="OpenSeat Home Screen">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="assets/images/Home.png" alt="OpenSeat Home Screen">
+                    </div>
+                </div>
             </div>
             <div class="floating-screenshot left-bottom">
-                <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard">
+                    </div>
+                </div>
             </div>
             <div class="floating-screenshot right-top">
-                <img src="assets/images/Ticket.png" alt="Digital Ticket">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="assets/images/Ticket.png" alt="Digital Ticket">
+                    </div>
+                </div>
             </div>
         </div>
         <section class="hero">
@@ -1016,7 +1236,7 @@
             <div class="section-header">
                 <div class="section-badge">Why OpenSeat</div>
                 <h2>Event Management Shouldn't Be This Hard</h2>
-                <p>Most organizers juggle 4+ different tools just to run a single event. We built something better.</p>
+                <p>Most organizers juggle 3+ different tools just to run a single event. We built something better.</p>
             </div>
             <div class="comparison-grid">
                 <div class="comparison-card problem">
@@ -1026,15 +1246,15 @@
                             <line x1="15" y1="9" x2="9" y2="15"/>
                             <line x1="9" y1="9" x2="15" y2="15"/>
                         </svg>
-                        The Old Way
+                        Legacy Ticketing
                     </h3>
                     <ul>
-                        <li>Separate tools for ticketing, scanning, and payments</li>
-                        <li>No visibility into who's actually at your event</li>
-                        <li>Refunds require emailing support and waiting days</li>
-                        <li>Writing event descriptions takes hours</li>
-                        <li>Attendees get generic, boring tickets</li>
-                        <li>No real-time insights during the event</li>
+                        <li>Ticketing, scanning, and payments live in separate tools</li>
+                        <li>Limited visibility into who's actually attending</li>
+                        <li>Refunds require support tickets and manual follow-ups</li>
+                        <li>Event descriptions are written manually and take time</li>
+                        <li>Tickets feel generic and lack branding</li>
+                        <li>No real-time insight once doors open</li>
                     </ul>
                 </div>
                 <div class="comparison-card solution">
@@ -1046,10 +1266,10 @@
                         The OpenSeat Way
                     </h3>
                     <ul>
-                        <li>Everything in one mobile app — create, sell, scan, manage</li>
+                        <li>Everything in one mobile app: create, sell, scan, manage</li>
                         <li>Live gate monitoring shows attendance in real-time</li>
                         <li>Process full or partial refunds instantly from your phone</li>
-                        <li>AI writes professional descriptions in seconds</li>
+                        <li>AI when you want it, manual when you don't</li>
                         <li>Beautiful, unique ticket designs attendees love</li>
                         <li>Real-time financial reports and analytics</li>
                     </ul>
@@ -1107,7 +1327,7 @@
                     <h3>Monitor Your Gate Like Never Before</h3>
                     <p>
                         Watch attendance unfold in real-time. See exactly who's checked in, track entry rates by hour, 
-                        and identify your peak times — all from your phone while the event is happening.
+                        and identify your peak times. All from your phone while the event is happening.
                     </p>
                     <ul class="showcase-features">
                         <li>
@@ -1175,7 +1395,7 @@
                     <h3>Scan Tickets Faster Than Ever</h3>
                     <p>
                         Built-in QR scanner validates tickets instantly. Automatically detects duplicate scans, 
-                        wrong-event tickets, and refunded tickets — so your door staff can focus on welcoming guests.
+                        wrong-event tickets, and refunded tickets. Your door staff can focus on welcoming guests.
                     </p>
                     <ul class="showcase-features">
                         <li>
@@ -1206,7 +1426,7 @@
     </section>
 
     <!-- Two Column Platform -->
-    <section class="platform-section" id="organizers">
+    <section class="platform-section" id="platform">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Complete Solution</div>
@@ -1218,23 +1438,23 @@
                 <div class="platform-card" id="organizers">
                     <div class="platform-card-header">
                         <h3>For Event Organizers</h3>
-                        <p>Complete control over your events from creation to wrap-up. No other tools needed.</p>
-                </div>
+                        <p>A crystal-clear interface where every action is intuitive. Manage everything from the mobile app or the web. Nothing is left for interpretation.</p>
+                    </div>
 
                     <div class="feature-item">
                         <div class="feature-icon-box">
-                            <svg viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>
-                </div>
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                        </div>
                         <div class="feature-item-content">
-                            <h4>AI-Powered Creation</h4>
-                            <p>Generate professional descriptions instantly with customizable tone and length</p>
-                </div>
-                </div>
+                            <h4>Seamless Mobile and Web Experience</h4>
+                            <p>Sell tickets effortlessly on both mobile and desktop. Buyers can purchase from any device: no forced downloads, no friction, no lost sales.</p>
+                        </div>
+                    </div>
 
                     <div class="feature-item">
                         <div class="feature-icon-box">
                             <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-                </div>
+                        </div>
                         <div class="feature-item-content">
                             <h4>Live Gate Monitoring</h4>
                             <p>Real-time attendance tracking, scan history, and entry rate analytics</p>
@@ -1254,33 +1474,38 @@
                     <ul class="check-list">
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
+                            AI-powered event descriptions to save time
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
+                            Built-in QR scanner with instant validation
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
                             Multiple ticket tiers with flexible pricing
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Financial reports with revenue projections
-                        </li>
-                        <li>
-                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Built-in QR scanner with validation
-                        </li>
-                        <li>
-                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Secure Stripe Connect payments
+                            Secure Stripe Connect payments and payouts
                         </li>
                     </ul>
-
-                    <a href="mailto:contact@openseat.cc" class="platform-cta">
-                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                        Start Organizing
-                    </a>
                 </div>
 
                 <!-- For Attendees -->
                 <div class="platform-card" id="attendees">
                     <div class="platform-card-header">
                         <h3>For Event Goers</h3>
-                        <p>A delightful ticket buying experience and beautiful digital tickets they'll actually want to show off.</p>
+                        <p>A simple, self-explanatory experience from purchase to entry. Buy tickets on the web or the app, access them instantly, and walk in with a single scan.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon-box">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="feature-item-content">
+                            <h4>Buy in Seconds</h4>
+                            <p>Purchase tickets on the web or mobile app. No account required for checkout.</p>
+                        </div>
                     </div>
 
                     <div class="feature-item">
@@ -1289,17 +1514,7 @@
                         </div>
                         <div class="feature-item-content">
                             <h4>Beautiful Digital Tickets</h4>
-                            <p>Unique, eye-catching ticket designs — not boring PDFs</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon-box">
-                            <svg viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>
-                        </div>
-                        <div class="feature-item-content">
-                            <h4>Instant Checkout</h4>
-                            <p>Fast, secure payment with Stripe — tickets delivered immediately</p>
+                            <p>Unique, eye-catching ticket designs you'll want to show off.</p>
                         </div>
                     </div>
 
@@ -1309,7 +1524,7 @@
                         </div>
                         <div class="feature-item-content">
                             <h4>Hassle-Free Entry</h4>
-                            <p>Just show your QR code — scanned and verified in under a second</p>
+                            <p>Just show your QR code. Scanned and verified in under a second.</p>
                         </div>
                     </div>
 
@@ -1320,22 +1535,17 @@
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Save and organize favorite events
-                        </li>
-                        <li>
-                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
                             Complete ticket history with past events
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
                             Clear scanned/refunded status on tickets
                         </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
+                            Secure payments with instant delivery
+                        </li>
                     </ul>
-
-                    <a href="#" class="platform-cta">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21 5,3"/></svg>
-                        Download App
-                    </a>
                 </div>
             </div>
         </div>
@@ -1349,26 +1559,92 @@
                 <h2>From Idea to Sold Out in 4 Steps</h2>
                 <p>Get your event live and start selling tickets in minutes</p>
             </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Create Your Event</h3>
-                    <p>Enter basics, let AI write your description, search for your venue, and set ticket tiers.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Sell Tickets</h3>
-                    <p>Share your event. Secure Stripe checkout handles payments. Tickets delivered instantly.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Manage & Monitor</h3>
-                    <p>Track sales, process refunds, and view financial reports — all from your phone.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Run Your Event</h3>
-                    <p>Scan tickets at the door and watch attendance unfold in real-time on your dashboard.</p>
+            <div class="steps-container">
+                <div class="steps-grid">
+                    <div class="step-card-wrapper" onclick="this.classList.toggle('flipped')">
+                        <div class="step-card-inner">
+                            <div class="step-card-front">
+                                <div class="step-header">
+                                    <div class="step-icon">
+                                        <svg viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>
+                                    </div>
+                                    <div class="step-number">1</div>
+                                </div>
+                                <h3>Create Your Event</h3>
+                                <p>Enter basics, let AI write your description, search for your venue, and set ticket tiers.</p>
+                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
+                            </div>
+                            <div class="step-card-back" style="background-image: url('assets/images/event_creation_screenshot.png')">
+                                <div class="step-card-back-content">
+                                    <h4>AI-Powered Creation</h4>
+                                    <p>Generate descriptions, set pricing tiers, and publish in minutes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card-wrapper" onclick="this.classList.toggle('flipped')">
+                        <div class="step-card-inner">
+                            <div class="step-card-front">
+                                <div class="step-header">
+                                    <div class="step-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                                    </div>
+                                    <div class="step-number">2</div>
+                                </div>
+                                <h3>Sell Tickets</h3>
+                                <p>Share your event. Secure Stripe checkout handles payments. Tickets delivered instantly.</p>
+                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
+                            </div>
+                            <div class="step-card-back" style="background-image: url('assets/images/Ticket.png')">
+                                <div class="step-card-back-content">
+                                    <h4>Beautiful Tickets</h4>
+                                    <p>Eye-catching digital tickets delivered instantly to buyers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card-wrapper" onclick="this.classList.toggle('flipped')">
+                        <div class="step-card-inner">
+                            <div class="step-card-front">
+                                <div class="step-header">
+                                    <div class="step-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="step-number">3</div>
+                                </div>
+                                <h3>Manage & Monitor</h3>
+                                <p>Track sales, process refunds, and view financial reports. All from your phone.</p>
+                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
+                            </div>
+                            <div class="step-card-back" style="background-image: url('assets/images/Metrics.png')">
+                                <div class="step-card-back-content">
+                                    <h4>Real-Time Analytics</h4>
+                                    <p>Sales trends, revenue projections, and ticket breakdowns at a glance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card-wrapper" onclick="this.classList.toggle('flipped')">
+                        <div class="step-card-inner">
+                            <div class="step-card-front">
+                                <div class="step-header">
+                                    <div class="step-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/></svg>
+                                    </div>
+                                    <div class="step-number">4</div>
+                                </div>
+                                <h3>Run Your Event</h3>
+                                <p>Scan tickets at the door and watch attendance unfold in real-time.</p>
+                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
+                            </div>
+                            <div class="step-card-back" style="background-image: url('assets/images/gate_screenshot.png')">
+                                <div class="step-card-back-content">
+                                    <h4>Live Gate Monitoring</h4>
+                                    <p>Track who's arrived, scan rates, and attendance percentage live.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1378,8 +1654,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/images/Official_Alternate.png" alt="OpenSeat">
-                <p>The complete ticketing platform. Create, sell, scan, refund, and monitor — all from one app.</p>
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+                <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
                 <div class="social-links">
                     <a href="https://twitter.com/openseat" aria-label="Twitter">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -1408,20 +1684,11 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="mailto:contact@openseat.cc">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:contact@openseat.cc">contact@openseat.cc</a></li>
                 </ul>
             </div>
         </div>
@@ -1431,12 +1698,35 @@
     </footer>
 
     <script>
-        // Smooth scroll
+        // Smooth scroll with pulse animation for platform cards
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const href = a.getAttribute('href');
+                
+                // Special handling for organizers and attendees links
+                if (href === '#organizers' || href === '#attendees') {
+                    // Scroll to the platform section
+                    const platformSection = document.querySelector('#platform');
+                    if (platformSection) {
+                        platformSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    
+                    // Trigger pulse animation after scroll
+                    setTimeout(() => {
+                        const card = document.querySelector(href + '.platform-card');
+                        if (card) {
+                            card.classList.remove('pulse');
+                            void card.offsetWidth; // Force reflow
+                            card.classList.add('pulse');
+                        }
+                    }, 500);
+                } else {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
             });
         });
     </script>

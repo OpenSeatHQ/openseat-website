@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OpenSeat Privacy Policy - Learn how we collect, use, and protect your information.">
+    <title>Privacy Policy - OpenSeat</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2D7A3E;
+            --primary-dark: #1F5229;
+            --primary-light: #E8F5E9;
+            --text: #0F172A;
+            --text-secondary: #64748B;
+            --muted: #64748B;
+            --bg: #FFFFFF;
+            --bg-alt: #F8FAFC;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Content */
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 1.5rem 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .effective-date {
+            background: var(--bg-alt);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .policy-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        .policy-content h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        .policy-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .policy-content ul, .policy-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .policy-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-content strong {
+            color: var(--text);
+        }
+
+        .policy-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .policy-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            color: var(--text);
+            padding: 3.5rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand img {
+            height: 32px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.625rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-alt);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-section h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#organizers">For Organizers</a></li>
+                <li><a href="index.html#attendees">For Attendees</a></li>
+                <li><a href="index.html#how">How It Works</a></li>
+                <li><a href="mailto:contact@openseat.cc" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="page-content">
+        <div class="page-header">
+            <h1>Privacy Policy</h1>
+        </div>
+
+        <div class="effective-date">
+            <strong>Effective Date:</strong> November 11, 2025<br>
+            <strong>Last Updated:</strong> November 11, 2025
+        </div>
+
+        <div class="policy-content">
+            <p>This Privacy Policy explains how <strong>OpenSeat LLC</strong> ("OpenSeat," "we," "us," or "our") collects, uses, shares, and protects your information when you use our website, mobile app, and ticketing platform (the "Platform").</p>
+            <p>By using the Platform, you agree to the practices described in this Privacy Policy.</p>
+
+            <h2>1. Information We Collect</h2>
+            <p>We collect information in the following ways:</p>
+
+            <h3>1.1 Information You Provide</h3>
+            <p>When you interact with OpenSeat, such as purchasing tickets, creating an account, or contacting support, you may provide:</p>
+            <ul>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Authentication details</li>
+                <li>Payment intent information (handled by Stripe)</li>
+                <li>Support inquiries, messages, or feedback</li>
+            </ul>
+            <p>Organizers may also provide:</p>
+            <ul>
+                <li>Business or venue name</li>
+                <li>Payout details</li>
+                <li>Event information</li>
+                <li>Branding materials</li>
+            </ul>
+            <p>We do <strong>not</strong> collect or store credit card numbers or full payment details.</p>
+
+            <h3>1.2 Information Collected Automatically</h3>
+            <p>When you use the Platform, we may collect:</p>
+            <ul>
+                <li>Device information (model, OS, browser type)</li>
+                <li>Log information (IP address, timestamps)</li>
+                <li>Usage information (pages or screens viewed, interactions, referring URLs)</li>
+                <li>Diagnostic and performance data (error logs, crash reports)</li>
+            </ul>
+            <p>This data helps us maintain security and improve the Platform.</p>
+
+            <h3>1.3 Location Information</h3>
+            <p>We may collect approximate location information (such as IP-based location) to:</p>
+            <ul>
+                <li>Prevent fraud</li>
+                <li>Improve event discovery</li>
+                <li>Enhance product functionality</li>
+            </ul>
+            <p>We do <strong>not</strong> request precise GPS location unless you explicitly enable it in your device settings.</p>
+
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect for purposes including:</p>
+
+            <h3>2.1 Operating and Improving the Platform</h3>
+            <p>To:</p>
+            <ul>
+                <li>Process ticket purchases</li>
+                <li>Deliver and store tickets</li>
+                <li>Authenticate users</li>
+                <li>Improve features and performance</li>
+                <li>Maintain security and prevent fraud</li>
+            </ul>
+
+            <h3>2.2 Communications</h3>
+            <p><strong>Transactional communications</strong></p>
+            <p>We may send transactional emails or SMS for:</p>
+            <ul>
+                <li>Purchase confirmations</li>
+                <li>Ticket delivery</li>
+                <li>Event updates or cancellations</li>
+                <li>Verification codes</li>
+                <li>Account changes</li>
+                <li>Security alerts</li>
+                <li>Customer support replies</li>
+            </ul>
+            <p><strong>Marketing emails (opt-in only)</strong></p>
+            <p>We send promotional emails <strong>only if you explicitly opt in</strong>. You may unsubscribe at any time.</p>
+            <p><strong>No SMS Marketing</strong></p>
+            <p>Your phone number is used <strong>only</strong> for:</p>
+            <ul>
+                <li>Account verification</li>
+                <li>Login and authentication (as an alternative method to your email address)</li>
+                <li>Accessing your tickets</li>
+                <li>Essential service or security messages</li>
+            </ul>
+            <p>We do <strong>not</strong> send marketing or promotional SMS.</p>
+            <p>We do <strong>not</strong> sell, rent, or share phone numbers with third parties for marketing.</p>
+
+            <h3>2.3 Security & Compliance</h3>
+            <p>To:</p>
+            <ul>
+                <li>Detect and prevent fraud</li>
+                <li>Secure accounts</li>
+                <li>Comply with legal obligations</li>
+                <li>Enforce our Terms of Service</li>
+            </ul>
+
+            <h2>3. How We Share Information</h2>
+            <p>We share your information only when necessary to operate the Platform or comply with law.</p>
+
+            <h3>3.1 Payment Processing</h3>
+            <p>We use <strong>Stripe</strong> to process payments securely. Stripe may receive:</p>
+            <ul>
+                <li>Your email</li>
+                <li>Phone number</li>
+                <li>Billing details</li>
+                <li>Purchase-related information</li>
+                <li>Device information</li>
+            </ul>
+            <p>Stripe does <strong>not</strong> share your full payment card information with us.</p>
+
+            <h3>3.2 Service Providers</h3>
+            <p>We may share information with trusted third-party service providers who assist with:</p>
+            <ul>
+                <li>Hosting and infrastructure</li>
+                <li>Authentication</li>
+                <li>Analytics and performance monitoring</li>
+                <li>Customer support tools</li>
+                <li>Communication delivery (email/SMS)</li>
+            </ul>
+            <p>These providers are contractually required to protect your information.</p>
+
+            <h3>3.3 Event Organizers</h3>
+            <p>To help Organizers manage events, we may share:</p>
+            <ul>
+                <li>Your name (if provided)</li>
+                <li>Email</li>
+                <li>Phone number</li>
+                <li>Ticket details</li>
+                <li>Attendance status</li>
+            </ul>
+            <p>Organizers may not use your phone number for SMS marketing through OpenSeat.</p>
+
+            <h3>3.4 Legal & Regulatory Requirements</h3>
+            <p>We may disclose information to:</p>
+            <ul>
+                <li>Comply with laws or regulations</li>
+                <li>Respond to lawful requests</li>
+                <li>Protect the safety or rights of OpenSeat, users, or the public</li>
+            </ul>
+
+            <h2>4. Data Retention</h2>
+            <p>We retain data only for as long as needed to:</p>
+            <ul>
+                <li>Operate the Platform</li>
+                <li>Comply with legal obligations</li>
+                <li>Resolve disputes</li>
+                <li>Maintain security</li>
+            </ul>
+            <p>If you delete your account, we will:</p>
+            <ul>
+                <li>Deactivate your profile</li>
+                <li>Retain only what is necessary for legal, audit, or security purposes</li>
+            </ul>
+
+            <h2>5. Cookies & Tracking Technologies</h2>
+            <p>Our website may use basic cookies or similar technologies provided by our website host and payment processor to enable essential functionality such as page performance, security, and checkout. We do not use cookies for advertising or tracking users for marketing purposes. You can disable cookies in your browser settings, but this may affect certain features.</p>
+
+            <h2>6. Children & Minors</h2>
+            <p>The Platform is intended for general audiences, but:</p>
+            <ul>
+                <li>You must be <strong>18 or older</strong> to purchase tickets.</li>
+                <li>By purchasing, you confirm you are an adult or using an adult's payment method with permission.</li>
+                <li>We do not knowingly collect personal information from children under 13.</li>
+            </ul>
+            <p>If such data is discovered, we will delete it.</p>
+
+            <h2>7. Your Rights</h2>
+            <p>Depending on your location, you may have the right to:</p>
+            <ul>
+                <li>Access your information</li>
+                <li>Request corrections</li>
+                <li>Request deletion</li>
+                <li>Opt out of marketing</li>
+                <li>Restrict certain processing</li>
+            </ul>
+            <p>To exercise your rights, send an email to <a href="mailto:contact@openseat.cc">contact@openseat.cc</a></p>
+
+            <h2>8. International Users</h2>
+            <p>OpenSeat is designed for use within the United States. If you access the Platform from outside the U.S., you consent to your data being processed in the U.S.</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy. If we make changes, we will update the "Last Updated" date at the top. Your continued use of the Platform means you accept the updated policy.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>For questions or privacy requests, send an email to <a href="mailto:contact@openseat.cc">contact@openseat.cc</a></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+                <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
+                <div class="social-links">
+                    <a href="https://twitter.com/openseat" aria-label="Twitter">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/openseat" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/openseat" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#organizers">For Organizers</a></li>
+                    <li><a href="index.html#attendees">For Attendees</a></li>
+                    <li><a href="index.html#how">How It Works</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:contact@openseat.cc">contact@openseat.cc</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 OpenSeat. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
