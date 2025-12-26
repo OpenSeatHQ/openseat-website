@@ -100,11 +100,88 @@
         }
 
         /* Hero */
+        .hero-wrapper {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
         .hero {
-            padding: 8rem 1.5rem 4rem;
+            position: relative;
+            padding: 8rem 1.5rem 6rem;
             max-width: 1280px;
             margin: 0 auto;
             text-align: center;
+            z-index: 2;
+        }
+
+        /* Floating Screenshots */
+        .hero-floating-screenshots {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-screenshot {
+            position: absolute;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .floating-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .floating-screenshot.left-top {
+            width: 220px;
+            top: 12%;
+            left: -2%;
+            transform: rotate(-8deg);
+            opacity: 0.9;
+        }
+
+        .floating-screenshot.left-bottom {
+            width: 200px;
+            bottom: 8%;
+            left: 2%;
+            transform: rotate(6deg);
+            opacity: 0.85;
+        }
+
+        .floating-screenshot.right-top {
+            width: 240px;
+            top: 8%;
+            right: -3%;
+            transform: rotate(10deg);
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1200px) {
+            .floating-screenshot.left-top {
+                width: 180px;
+                left: -8%;
+            }
+            .floating-screenshot.left-bottom {
+                width: 160px;
+                left: -5%;
+            }
+            .floating-screenshot.right-top {
+                width: 200px;
+                right: -8%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-floating-screenshots {
+                display: none;
+            }
         }
 
         .hero-badge {
@@ -203,87 +280,6 @@
         .app-store-link img {
             height: 50px;
             width: auto;
-        }
-
-        /* Video Demo Section */
-        .demo-section {
-            padding: 4rem 1.5rem;
-            background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-        }
-
-        .demo-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .demo-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .demo-header h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .demo-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .video-placeholder {
-            aspect-ratio: 16 / 9;
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(45, 122, 62, 0.15) 0%, transparent 50%);
-        }
-
-        .play-button {
-            width: 88px;
-            height: 88px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 32px rgba(45, 122, 62, 0.4);
-            z-index: 1;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(45, 122, 62, 0.5);
-        }
-
-        .play-button svg {
-            width: 36px;
-            height: 36px;
-            fill: white;
-            margin-left: 4px;
-        }
-
-        .video-placeholder p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
-            z-index: 1;
         }
 
         /* Problem/Solution Section */
@@ -975,21 +971,33 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
-        <div class="hero-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-            All-in-One Ticketing Platform
+    <div class="hero-wrapper">
+        <div class="hero-floating-screenshots">
+            <div class="floating-screenshot left-top">
+                <img src="assets/images/Home.png" alt="OpenSeat Home Screen">
+            </div>
+            <div class="floating-screenshot left-bottom">
+                <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard">
+            </div>
+            <div class="floating-screenshot right-top">
+                <img src="assets/images/Ticket.png" alt="Digital Ticket">
+            </div>
         </div>
-        <h1>
-            Stop Juggling Tools.<br>
-            <span class="hero-gradient">Run Your Events</span> From One App.
+        <section class="hero">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                All-in-One Ticketing Platform
+            </div>
+            <h1>
+                Stop Juggling Tools.<br>
+                <span class="hero-gradient">Run Your Events</span> From One App.
             </h1>
             <p>
-            Create events with AI, sell tickets, process in-app refunds, and monitor your gate in real-time. 
-            OpenSeat gives you complete control over every aspect of your event.
+                Create events with AI, sell tickets, process in-app refunds, and monitor your gate in real-time. 
+                OpenSeat gives you complete control over every aspect of your event.
             </p>
             <div class="app-buttons">
                 <a href="#" class="app-store-link">
@@ -999,25 +1007,8 @@
                     <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50">
                 </a>
             </div>
-    </section>
-
-    <!-- Video Demo -->
-    <section class="demo-section" id="demo">
-        <div class="demo-container">
-            <div class="demo-header">
-                <h2>See OpenSeat in Action</h2>
-                <p>Watch how easy it is to create, manage, and run your events</p>
-        </div>
-            <div class="video-placeholder">
-                <div class="play-button">
-                    <svg viewBox="0 0 24 24">
-                        <polygon points="5,3 19,12 5,21"/>
-                    </svg>
-                </div>
-                <p>Full demo video coming soon</p>
-                </div>
-                </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Problem / Solution -->
     <section class="problem-section">
