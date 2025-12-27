@@ -332,8 +332,8 @@
         }
 
         .comparison-card.problem {
-            background: #FEF2F2;
-            border-color: #FECACA;
+            background: #F8FAFC;
+            border-color: #CBD5E1;
         }
 
         .comparison-card.solution {
@@ -351,7 +351,7 @@
         }
 
         .comparison-card.problem h3 {
-            color: #DC2626;
+            color: #64748B;
         }
 
         .comparison-card.solution h3 {
@@ -373,7 +373,7 @@
 
         .comparison-card.problem li::before {
             content: '✕';
-            color: #DC2626;
+            color: #94A3B8;
             font-weight: 700;
             flex-shrink: 0;
         }
@@ -488,32 +488,6 @@
             box-shadow: 
                 0 25px 50px -12px rgba(0, 0, 0, 0.25),
                 inset 0 0 0 1px #333;
-        }
-
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 16px;
-            background: #1a1a1a;
-            border-radius: 0 0 12px 12px;
-            z-index: 10;
-        }
-
-        .phone-frame::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: #333;
-            border-radius: 50%;
-            z-index: 11;
         }
 
         .phone-screen {
@@ -738,6 +712,15 @@
             scroll-snap-align: start;
             margin-right: 2.5rem;
             cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .step-card-wrapper.flipped {
+            flex: 0 0 300px;
+            height: 400px;
+            z-index: 10;
+            margin-right: 3rem;
         }
 
         .step-card-wrapper:last-child {
@@ -780,12 +763,18 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.6s;
+            transition: transform 0.6s, width 0.4s, height 0.4s;
             transform-style: preserve-3d;
         }
 
         .step-card-wrapper.flipped .step-card-inner {
             transform: rotateY(180deg);
+        }
+
+        .step-card-wrapper.flipped .step-card-front,
+        .step-card-wrapper.flipped .step-card-back {
+            width: 100%;
+            height: 100%;
         }
 
         .step-card-front,
@@ -1130,6 +1119,12 @@
                 margin-right: 1.5rem;
             }
 
+            .step-card-wrapper.flipped {
+                flex: 0 0 260px;
+                height: 360px;
+                margin-right: 2rem;
+            }
+
             .step-card-wrapper::after,
             .step-card-wrapper::before {
                 display: none;
@@ -1165,7 +1160,7 @@
     <nav>
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+                <img src="assets/images/Official.png" alt="OpenSeat">
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
@@ -1239,6 +1234,23 @@
                 <p>Most organizers juggle 3+ different tools just to run a single event. We built something better.</p>
             </div>
             <div class="comparison-grid">
+                <div class="comparison-card solution">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        The OpenSeat Way
+                    </h3>
+                    <ul>
+                        <li>Everything in one mobile app: create, sell, scan, manage</li>
+                        <li>Live gate monitoring shows attendance in real-time</li>
+                        <li>Process full or partial refunds instantly from your phone</li>
+                        <li>AI when you want it, manual when you don't</li>
+                        <li>Beautiful, unique ticket designs attendees love</li>
+                        <li>Real-time financial reports and analytics</li>
+                    </ul>
+                </div>
                 <div class="comparison-card problem">
                     <h3>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1255,23 +1267,6 @@
                         <li>Event descriptions are written manually and take time</li>
                         <li>Tickets feel generic and lack branding</li>
                         <li>No real-time insight once doors open</li>
-                    </ul>
-                </div>
-                <div class="comparison-card solution">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                        The OpenSeat Way
-                    </h3>
-                    <ul>
-                        <li>Everything in one mobile app: create, sell, scan, manage</li>
-                        <li>Live gate monitoring shows attendance in real-time</li>
-                        <li>Process full or partial refunds instantly from your phone</li>
-                        <li>AI when you want it, manual when you don't</li>
-                        <li>Beautiful, unique ticket designs attendees love</li>
-                        <li>Real-time financial reports and analytics</li>
                     </ul>
                 </div>
             </div>
@@ -1654,7 +1649,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/images/new_logo.svg" alt="OpenSeat">
+                <img src="assets/images/Official.png" alt="OpenSeat">
                 <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
                 <div class="social-links">
                     <a href="https://twitter.com/openseat" aria-label="Twitter">
