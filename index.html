@@ -6,6 +6,9 @@
     <meta name="description" content="OpenSeat - The complete ticketing platform. Create events with AI, sell tickets, process refunds, monitor gates in real-time - all from one app.">
     <title>OpenSeat - The Complete Ticketing Platform</title>
     
+    <link rel="icon" type="image/png" href="assets/images/Official.png">
+    <link rel="apple-touch-icon" href="assets/images/Official.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -64,8 +67,14 @@
             text-decoration: none;
         }
 
-        .logo img {
+        .logo .logo-icon {
             height: 32px;
+            width: auto;
+        }
+
+        .logo .logo-text {
+            height: 20px;
+            width: auto;
         }
 
         .nav-links {
@@ -889,21 +898,21 @@
             flex-grow: 1;
         }
 
-        .flip-hint {
-            font-size: 0.7rem;
-            color: var(--muted);
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+        /* Pulse animation for step cards when section comes into view */
+        @keyframes stepCardPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(45, 122, 62, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(45, 122, 62, 0);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
         }
 
-        .flip-hint svg {
-            width: 12px;
-            height: 12px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
+        .step-card-front.pulse-animate {
+            animation: stepCardPulse 1s ease-out;
         }
 
         /* CTA Section */
@@ -962,9 +971,21 @@
             margin-bottom: 2.5rem;
         }
 
-        .footer-brand img {
-            height: 32px;
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 1rem;
+        }
+
+        .footer-logo .logo-icon {
+            height: 32px;
+            width: auto;
+        }
+
+        .footer-logo .logo-text {
+            height: 20px;
+            width: auto;
         }
 
         .footer-brand p {
@@ -1213,23 +1234,23 @@
             }
 
             .step-card-wrapper {
-                flex: 0 0 220px;
-                height: 190px;
+                flex: 0 0 280px;
+                height: 220px;
                 margin-right: 1.5rem;
             }
 
             .step-card-wrapper.flipped {
-                height: 380px;
+                height: 420px;
             }
 
             .step-card-inner {
-                width: 220px;
-                height: 190px;
+                width: 280px;
+                height: 220px;
             }
 
             .step-card-wrapper.flipped .step-card-inner {
-                width: 240px;
-                height: 380px;
+                width: 280px;
+                height: 420px;
             }
 
             .step-card-wrapper::after,
@@ -1267,7 +1288,8 @@
     <nav>
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="assets/images/Official.png" alt="OpenSeat">
+                <img src="assets/images/Official_Alternate.png" alt="OpenSeat" class="logo-icon">
+                <img src="assets/images/new_logo.svg" alt="OpenSeat" class="logo-text">
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
@@ -1399,7 +1421,7 @@
             <div class="section-header">
                 <div class="section-badge">Powerful Features</div>
                 <h2>Built to Support How You Run Events</h2>
-                <p>Powerful tools that work the way you do: every feature designed to save you time and give you complete control</p>
+                <p>Powerful tools that work the way you do. Every feature is designed to save you time and give you complete control</p>
             </div>
 
             <div class="showcase-card">
@@ -1687,7 +1709,6 @@
                                 </div>
                                 <h3>Create Your Event</h3>
                                 <p>Enter basics, let AI write your description, search for your venue, and set ticket tiers.</p>
-                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/event_creation_screenshot.png')">
                                 <div class="step-card-back-content">
@@ -1708,7 +1729,6 @@
                                 </div>
                                 <h3>Sell Tickets</h3>
                                 <p>Share your event. Secure Stripe checkout handles payments. Tickets delivered instantly.</p>
-                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/Ticket_sasquatch.png')">
                                 <div class="step-card-back-content">
@@ -1729,7 +1749,6 @@
                                 </div>
                                 <h3>Manage & Monitor</h3>
                                 <p>Track sales, process refunds, and view financial reports. All from your phone.</p>
-                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/Metrics.png')">
                                 <div class="step-card-back-content">
@@ -1750,7 +1769,6 @@
                                 </div>
                                 <h3>Run Your Event</h3>
                                 <p>Scan tickets at the door and watch attendance unfold in real-time.</p>
-                                <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/gate_screenshot.png')">
                                 <div class="step-card-back-content">
@@ -1769,7 +1787,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/images/Official.png" alt="OpenSeat">
+                <div class="footer-logo">
+                    <img src="assets/images/Official_Alternate.png" alt="OpenSeat" class="logo-icon">
+                    <img src="assets/images/new_logo.svg" alt="OpenSeat" class="logo-text">
+                </div>
                 <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
                 <div class="social-links">
                     <a href="https://twitter.com/openseat" aria-label="Twitter">
@@ -1839,6 +1860,32 @@
         document.querySelectorAll('.mobile-nav-links a').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
+
+        // Pulse animation for step cards when section comes into view
+        const howSection = document.querySelector('#how');
+        const stepCards = document.querySelectorAll('.step-card-front');
+        let hasAnimated = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    stepCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('pulse-animate');
+                            // Remove class after animation completes to allow re-animation if needed
+                            setTimeout(() => {
+                                card.classList.remove('pulse-animate');
+                            }, 1000);
+                        }, index * 150); // Stagger the animations
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (howSection) {
+            observer.observe(howSection);
+        }
 
         // Smooth scroll with pulse animation for platform cards
         document.querySelectorAll('a[href^="#"]').forEach(a => {
