@@ -690,6 +690,7 @@
             -ms-overflow-style: none;
             padding: 1rem 0;
             justify-content: center;
+            align-items: center;
         }
 
         .steps-grid::-webkit-scrollbar {
@@ -709,30 +710,32 @@
             height: 200px;
             perspective: 1000px;
             position: relative;
-            scroll-snap-align: start;
+            scroll-snap-align: center;
             margin-right: 2.5rem;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: height 0.4s ease, flex 0.4s ease;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .step-card-wrapper.flipped {
-            flex: 0 0 300px;
-            height: 400px;
+            height: 450px;
             z-index: 10;
-            margin-right: 3rem;
         }
 
         .step-card-wrapper:last-child {
             margin-right: 0;
         }
 
+        /* Arrow connector - positioned relative to wrapper center */
         .step-card-wrapper::after {
             content: '';
             position: absolute;
-            right: -2rem;
+            right: -1.25rem;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(50%, -50%);
             width: 24px;
             height: 24px;
             background: var(--primary);
@@ -743,9 +746,9 @@
         .step-card-wrapper::before {
             content: '→';
             position: absolute;
-            right: -2rem;
+            right: -1.25rem;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(50%, -50%);
             font-size: 0.9rem;
             color: white;
             font-weight: 700;
@@ -761,20 +764,16 @@
 
         .step-card-inner {
             position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s, width 0.4s, height 0.4s;
+            width: 260px;
+            height: 200px;
+            transition: transform 0.6s, width 0.4s ease, height 0.4s ease;
             transform-style: preserve-3d;
         }
 
         .step-card-wrapper.flipped .step-card-inner {
             transform: rotateY(180deg);
-        }
-
-        .step-card-wrapper.flipped .step-card-front,
-        .step-card-wrapper.flipped .step-card-back {
-            width: 100%;
-            height: 100%;
+            width: 280px;
+            height: 450px;
         }
 
         .step-card-front,
@@ -1041,6 +1040,106 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text);
+            padding: 0.5rem;
+            z-index: 1002;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            padding: 5rem 1.5rem 2rem;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 0;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem 0;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+
+        .mobile-nav-links a.nav-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border-bottom: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .mobile-nav-links a.nav-cta:hover {
+            background: var(--primary-dark);
+            padding-left: 1.5rem;
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: block;
+            }
         }
 
         /* Responsive */
@@ -1120,9 +1219,17 @@
             }
 
             .step-card-wrapper.flipped {
-                flex: 0 0 260px;
-                height: 360px;
-                margin-right: 2rem;
+                height: 380px;
+            }
+
+            .step-card-inner {
+                width: 220px;
+                height: 190px;
+            }
+
+            .step-card-wrapper.flipped .step-card-inner {
+                width: 240px;
+                height: 380px;
             }
 
             .step-card-wrapper::after,
@@ -1169,9 +1276,22 @@
                 <li><a href="#how">How It Works</a></li>
                 <li><a href="mailto:contact@openseat.cc" class="nav-cta">Get Started</a></li>
             </ul>
-            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" aria-label="Open menu">☰</button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-nav">
+        <button class="mobile-close" aria-label="Close menu">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#organizers">For Organizers</a></li>
+            <li><a href="#attendees">For Attendees</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="mailto:contact@openseat.cc" class="nav-cta">Get Started</a></li>
+        </ul>
+    </div>
 
     <!-- Hero -->
     <div class="hero-wrapper">
@@ -1278,8 +1398,8 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Powerful Features</div>
-                <h2>Built for Serious Event Organizers</h2>
-                <p>Every feature designed to save you time and give you complete control</p>
+                <h2>Built to Support How You Run Events</h2>
+                <p>Powerful tools that work the way you do: every feature designed to save you time and give you complete control</p>
             </div>
 
             <div class="showcase-card">
@@ -1590,9 +1710,9 @@
                                 <p>Share your event. Secure Stripe checkout handles payments. Tickets delivered instantly.</p>
                                 <span class="flip-hint"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Click to see</span>
                             </div>
-                            <div class="step-card-back" style="background-image: url('assets/images/Ticket.png')">
+                            <div class="step-card-back" style="background-image: url('assets/images/Ticket_sasquatch.png')">
                                 <div class="step-card-back-content">
-                                    <h4>Beautiful Tickets</h4>
+                                    <h4>Original Tickets</h4>
                                     <p>Eye-catching digital tickets delivered instantly to buyers.</p>
                                 </div>
                             </div>
@@ -1693,6 +1813,33 @@
     </footer>
 
     <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileClose = document.querySelector('.mobile-close');
+
+        function openMobileMenu() {
+            mobileNav.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileClose.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
         // Smooth scroll with pulse animation for platform cards
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
