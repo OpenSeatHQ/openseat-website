@@ -784,27 +784,63 @@
         </div>
     </footer>
 
-    <script>
-        // Form submission handler (placeholder - will connect to Firebase later)
-        document.getElementById('organizerForm').addEventListener('submit', function(e) {
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMD8pPBKXmMlodKzRCTOF61I1L-xV_mI",
+            authDomain: "openseat-ticketing.firebaseapp.com",
+            projectId: "openseat-ticketing",
+            storageBucket: "openseat-ticketing.appspot.com",
+            messagingSenderId: "285106387601",
+            appId: "1:285106387601:web:30c886214bca46fc681d30"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const functions = getFunctions(app);
+
+        // Form submission handler
+        document.getElementById('organizerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                companyName: document.getElementById('companyName').value,
-                companyAddress: document.getElementById('companyAddress').value,
-                businessEmail: document.getElementById('businessEmail').value,
-                submittedAt: new Date().toISOString()
-            };
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
             
-            // Log for now (will connect to Firebase later)
-            console.log('Form submitted:', formData);
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
             
-            // Show success state
-            document.querySelector('.form-content').classList.add('hidden');
-            document.querySelector('.form-success').classList.add('show');
+            try {
+                // Get form data
+                const formData = {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    companyName: document.getElementById('companyName').value.trim(),
+                    companyAddress: document.getElementById('companyAddress').value.trim(),
+                    businessEmail: document.getElementById('businessEmail').value.trim()
+                };
+                
+                // Call Firebase function
+                const sendOrganizerApplicationEmail = httpsCallable(functions, 'sendOrganizerApplicationEmail');
+                await sendOrganizerApplicationEmail(formData);
+                
+                // Show success state
+                document.querySelector('.form-content').classList.add('hidden');
+                document.querySelector('.form-success').classList.add('show');
+            } catch (error) {
+                console.error('Error submitting application:', error);
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                
+                // Show error message
+                alert('Failed to submit application. Please try again or contact us at contact@openseat.cc');
+            }
         });
     </script>
 </body>
