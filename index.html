@@ -10,6 +10,8 @@
     <link rel="icon" type="image/png" href="assets/images/Official.png">
     <link rel="apple-touch-icon" href="assets/images/Official.png">
     
+    <!-- OPTIMIZATION: Preload critical resources -->
+    <link rel="preload" as="image" href="assets/images/new_logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1309,21 +1311,22 @@
             <div class="floating-screenshot left-top">
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/Home.png" alt="OpenSeat Home Screen">
+                        <!-- OPTIMIZATION: Lazy load images below fold -->
+                        <img src="assets/images/Home.png" alt="OpenSeat Home Screen" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
             <div class="floating-screenshot left-bottom">
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard">
+                        <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
             <div class="floating-screenshot right-top">
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/Ticket.png" alt="Digital Ticket">
+                        <img src="assets/images/Ticket.png" alt="Digital Ticket" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -1346,10 +1349,11 @@
             </p>
             <div class="app-buttons">
                 <a href="#" class="app-store-link">
-                    <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50">
+                    <!-- OPTIMIZATION: App store badges visible in viewport, load immediately -->
+                    <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
                 </a>
                 <a href="#" class="app-store-link">
-                    <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50">
+                    <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
                 </a>
             </div>
         </section>
@@ -1441,7 +1445,8 @@
                     </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/event_creation_screenshot.png" alt="AI-powered event creation with tone selection">
+                        <!-- OPTIMIZATION: Lazy load below-fold images -->
+                        <img src="assets/images/event_creation_screenshot.png" alt="AI-powered event creation with tone selection" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -1475,7 +1480,7 @@
                 </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/gate_screenshot.png" alt="Real-time gate activity and attendance monitoring">
+                        <img src="assets/images/gate_screenshot.png" alt="Real-time gate activity and attendance monitoring" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -1509,7 +1514,7 @@
                 </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/event_refund_screenshot.png" alt="In-app refunds and order management">
+                        <img src="assets/images/event_refund_screenshot.png" alt="In-app refunds and order management" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -1543,7 +1548,7 @@
                 </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/QR_scanner_screenshot.jpeg" alt="Lightning-fast QR ticket scanning">
+                        <img src="assets/images/QR_scanner_screenshot.jpeg" alt="Lightning-fast QR ticket scanning" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
