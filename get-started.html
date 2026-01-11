@@ -274,47 +274,49 @@
         .privacy-checkbox {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: var(--bg-alt);
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            transition: border-color 0.2s;
-        }
-
-        .privacy-checkbox.error {
-            border-color: #EF4444;
-            background: #FEF2F2;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
         }
 
         .privacy-checkbox input[type="checkbox"] {
-            margin-top: 0.25rem;
-            width: 18px;
-            height: 18px;
+            margin-top: 0.125rem;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             flex-shrink: 0;
             accent-color: var(--primary);
         }
 
         .privacy-checkbox label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            font-size: 0.825rem;
+            color: var(--muted);
             cursor: pointer;
-            line-height: 1.5;
+            line-height: 1.4;
             font-weight: 400;
         }
 
         .privacy-checkbox label a {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
             transition: color 0.2s;
         }
 
         .privacy-checkbox label a:hover {
-            color: var(--primary-dark);
             text-decoration: underline;
+        }
+
+        .privacy-checkbox-error {
+            font-size: 0.8rem;
+            color: #EF4444;
+            margin-top: 0.25rem;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .privacy-checkbox-error.show {
+            display: block;
         }
 
         /* Infographics Section */
@@ -712,12 +714,13 @@
                         <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+1 (555) 123-4567">
                     </div>
                     
-                    <div class="privacy-checkbox" id="privacyCheckboxContainer">
+                    <div class="privacy-checkbox">
                         <input type="checkbox" id="privacyCheckbox" name="privacyCheckbox" required>
                         <label for="privacyCheckbox">
                             I agree to OpenSeat's <a href="https://openseat.cc/privacy-policy.html" target="_blank">Privacy Policy</a>
                         </label>
                     </div>
+                    <div class="privacy-checkbox-error" id="privacyError">Please agree to the Privacy Policy to continue</div>
                     
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </form>
@@ -1001,13 +1004,13 @@
             
             // Validate privacy policy checkbox
             const privacyCheckbox = document.getElementById('privacyCheckbox');
-            const privacyContainer = document.getElementById('privacyCheckboxContainer');
+            const privacyError = document.getElementById('privacyError');
             if (!privacyCheckbox.checked) {
-                privacyContainer.classList.add('error');
+                privacyError.classList.add('show');
                 privacyCheckbox.focus();
                 return;
             } else {
-                privacyContainer.classList.remove('error');
+                privacyError.classList.remove('show');
             }
             
             // Disable button and show loading state
@@ -1057,11 +1060,11 @@
             }
         });
 
-        // Remove error styling when checkbox is checked
+        // Remove error message when checkbox is checked
         document.getElementById('privacyCheckbox').addEventListener('change', function() {
-            const privacyContainer = document.getElementById('privacyCheckboxContainer');
+            const privacyError = document.getElementById('privacyError');
             if (this.checked) {
-                privacyContainer.classList.remove('error');
+                privacyError.classList.remove('show');
             }
         });
 
