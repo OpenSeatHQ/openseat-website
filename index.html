@@ -117,7 +117,7 @@
             max-width: 1280px;
             margin: 0 auto;
             text-align: center;
-            z-index: 2;
+            z-index: 10;
         }
 
         /* Floating Screenshots */
@@ -141,7 +141,7 @@
         .floating-screenshot.left-top {
             width: 220px;
             top: 12%;
-            left: -2%;
+            left: -8%;
             transform: rotate(-8deg);
             z-index: 1;
         }
@@ -149,30 +149,35 @@
         .floating-screenshot.left-bottom {
             width: 200px;
             bottom: 8%;
-            left: 2%;
+            left: -4%;
             transform: rotate(6deg);
-            z-index: 2;
+            z-index: 1;
         }
 
         .floating-screenshot.right-top {
             width: 240px;
             top: 8%;
-            right: -3%;
+            right: -8%;
             transform: rotate(10deg);
+            z-index: 1;
         }
 
         @media (max-width: 1200px) {
             .floating-screenshot.left-top {
                 width: 180px;
-                left: -8%;
+                left: -12%;
             }
             .floating-screenshot.left-bottom {
                 width: 160px;
-                left: -5%;
+                left: -8%;
             }
             .floating-screenshot.right-top {
                 width: 200px;
-                right: -8%;
+                right: -12%;
+            }
+            .hero h1,
+            .hero p {
+                padding: 0 1.5rem;
             }
         }
 
@@ -193,6 +198,8 @@
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 11;
         }
 
         .hero h1 {
@@ -201,6 +208,9 @@
             line-height: 1.1;
             margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
+            position: relative;
+            z-index: 11;
+            padding: 0 2rem;
         }
 
         .hero-gradient {
@@ -216,6 +226,9 @@
             max-width: 720px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 11;
+            padding: 0 2rem;
         }
 
         .hero-actions {
@@ -1204,10 +1217,12 @@
 
             .hero h1 {
                 font-size: 2.25rem;
+                padding: 0 1rem;
             }
 
             .hero p {
                 font-size: 1rem;
+                padding: 0 1rem;
             }
 
             .section-header h2 {
