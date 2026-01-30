@@ -84,10 +84,10 @@ chmod +x deploy.sh
 When the app is published, update these links in `index.html`:
 ```html
 <!-- App Store -->
-<a href="https://apps.apple.com/app/openseat/idXXXXXXXXX">
+<a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939">
 
 <!-- Google Play Store -->
-<a href="https://play.google.com/store/apps/details?id=com.openseat.app">
+<a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing">
 ```
 
 ### Social Media Links

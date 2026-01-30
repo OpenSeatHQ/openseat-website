@@ -105,10 +105,10 @@ When your app is published, update the download buttons in `index.html`:
 
 ```html
 <!-- App Store -->
-<a href="https://apps.apple.com/app/openseat/idXXXXXXXXX" class="download-btn" id="app-store-btn">
+<a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="download-btn" id="app-store-btn">
 
 <!-- Google Play Store -->
-<a href="https://play.google.com/store/apps/details?id=com.openseat.app" class="download-btn" id="play-store-btn">
+<a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="download-btn" id="play-store-btn">
 ```
 
 ### Social Media Links
