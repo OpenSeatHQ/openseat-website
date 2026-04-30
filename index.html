@@ -136,108 +136,83 @@
         .hero-wrapper {
             position: relative;
             overflow: hidden;
+            /* Exactly tall enough for 14 rows × row-height + 13 gaps */
+            min-height: calc(14 * 1.8rem + 13 * 0.35rem);
         }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.35rem;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-bg-row {
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            min-height: 1.8rem;
+        }
+
+        .hero-bg-row-inner {
+            display: inline-flex;
+            gap: 2rem;
+            white-space: nowrap;
+            animation: heroMarquee 32s linear infinite;
+            will-change: transform;
+        }
+
+        .hero-bg-row:nth-child(even) .hero-bg-row-inner {
+            animation-direction: reverse;
+        }
+
+        @keyframes heroMarquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .hero-bg-phrase {
+            font-size: 0.96rem;
+            color: rgba(0, 0, 0, 0.8);
+            white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            line-height: 1.8;
+        }
+
 
         .hero {
             position: relative;
-            padding: 8rem 1.5rem 3rem;
+            min-height: inherit;
             max-width: 1280px;
             margin: 0 auto;
             text-align: center;
             z-index: 10;
-        }
-
-        /* Floating Screenshots */
-        .hero-floating-screenshots {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .floating-screenshot {
-            position: absolute;
-        }
-
-        .floating-screenshot .phone-frame {
-            max-width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .floating-screenshot.left-top {
-            width: 220px;
-            top: 12%;
-            left: -8%;
-            transform: rotate(-8deg);
-            z-index: 1;
-        }
-
-        .floating-screenshot.left-bottom {
-            width: 200px;
-            bottom: 8%;
-            left: -4%;
-            transform: rotate(6deg);
-            z-index: 1;
-        }
-
-        .floating-screenshot.right-top {
-            width: 240px;
-            top: 8%;
-            right: -8%;
-            transform: rotate(10deg);
-            z-index: 1;
-        }
-
-        @media (max-width: 1200px) {
-            .floating-screenshot.left-top {
-                width: 180px;
-                left: -12%;
-            }
-            .floating-screenshot.left-bottom {
-                width: 160px;
-                left: -8%;
-            }
-            .floating-screenshot.right-top {
-                width: 200px;
-                right: -12%;
-            }
-            .hero h1,
-            .hero p {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .hero-floating-screenshots {
-                display: none;
-            }
-        }
-
-        .hero-badge {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 11;
+            padding: calc(4rem + 64px) 1.5rem 4rem;
+        }
+
+        .hero-content {
+            width: min(100%, 520px);
+            padding: 2.25rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
         }
 
         .hero h1 {
-            font-size: 3.75rem;
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             letter-spacing: -0.03em;
-            position: relative;
-            z-index: 11;
-            padding: 0 2rem;
         }
 
         .hero-gradient {
@@ -247,25 +222,28 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 11;
-            padding: 0 2rem;
+        .hero p.hero-impact {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
+
+        .hero-impact-fadein {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .unified-cta {
+            text-align: center;
+            padding: 1rem 1.5rem 0;
+        }
+
 
         .btn {
             padding: 1rem 2rem;
@@ -311,6 +289,9 @@
             font-size: 0.7rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            display: inline-block;
+            transform: scale(0.75);
+            transform-origin: center center;
         }
 
         .app-buttons {
@@ -349,19 +330,6 @@
         .section-header {
             text-align: center;
             margin-bottom: 3.5rem;
-        }
-
-        .section-badge {
-            display: inline-block;
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
         }
 
         .section-header h2 {
@@ -477,19 +445,6 @@
 
         .showcase-content {
             padding: 1rem;
-        }
-
-        .showcase-badge {
-            display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
         }
 
         .showcase-content h3 {
@@ -1211,10 +1166,6 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-
             .hero h2.hero-cta-text {
                 font-size: 2rem;
             }
@@ -1249,6 +1200,15 @@
         }
 
         @media (max-width: 768px) {
+            .hero-bg-phrase {
+                font-size: 0.78rem;
+            }
+            .hero-bg-row {
+                min-height: 1.5rem;
+            }
+            .hero-wrapper {
+                min-height: calc(14 * 1.5rem + 13 * 0.35rem);
+            }
             .nav-links {
                 display: none;
             }
@@ -1258,22 +1218,11 @@
             }
 
             .hero {
-                padding-top: 6rem;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-                padding: 0 1rem;
+                padding-top: 5rem;
             }
 
             .hero h2.hero-cta-text {
                 font-size: 1.5rem;
-                padding: 0 1rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                padding: 0 1rem;
             }
 
             .section-header h2 {
@@ -1373,67 +1322,37 @@
 
     <!-- Hero -->
     <div class="hero-wrapper">
-        <div class="hero-floating-screenshots">
-            <div class="floating-screenshot left-top">
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <!-- OPTIMIZATION: Lazy load images below fold -->
-                        <img src="assets/images/Home.png" alt="OpenSeat Home Screen" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-            <div class="floating-screenshot left-bottom">
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <img src="assets/images/Metrics.png" alt="Event Metrics Dashboard" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-            <div class="floating-screenshot right-top">
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <img src="assets/images/Ticket.png" alt="Digital Ticket" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="hero-bg" id="heroBg"></div>
         <section class="hero">
-            <div class="hero-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-                Built for You
-            </div>
-            <h1>
-                Born in the Northwest.<br>
-                <span class="hero-gradient">A simpler way to sell tickets</span>
-            </h1>
-            <p>
-                Mobile first ticketing for small venues. Create, sell, scan, and track attendance - all in one place.
-            </p>
-            <h2 class="hero-cta-text">
-                Try for <span style="color: var(--primary);">free</span> today!<br>
-                No contract. No start up costs.
-            </h2>
-            <p class="hero-disclaimer">*Payment processing fees apply.</p>
-            <div class="app-buttons">
-                <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
-                    <!-- OPTIMIZATION: App store badges visible in viewport, load immediately -->
-                    <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
-                    <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
-                </a>
+            <div class="hero-content">
+                <h1>
+                    <span class="hero-gradient">A simpler way to<br>sell tickets</span>
+                </h1>
+                <p class="hero-impact hero-impact-fadein">10% of our platform fees go to<br>local organizations supporting<br>drug and alcohol recovery 💚</p>
             </div>
         </section>
+    </div>
+
+    <div class="unified-cta">
+        <h2 class="hero-cta-text">
+            Try for <span style="color: var(--primary);">free</span> today!<br>
+            No contract. No start up costs.
+        </h2>
+        <p class="hero-disclaimer">*Payment processing fees apply.</p>
+        <div class="app-buttons">
+            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
+                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
+                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
+            </a>
+        </div>
     </div>
 
     <!-- Problem / Solution -->
     <section class="problem-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Why OpenSeat</div>
                 <h2>Unified Experience</h2>
                 <p>Most venues and promoters stitch together ticketing, the door, and payouts. We built one place to run the whole night.</p>
             </div>
@@ -1481,14 +1400,12 @@
     <section class="showcase-section" id="features">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Powerful Features</div>
                 <h2>Built For How You Operate</h2>
                 <p>Everything you need to get a show up, sell tickets, run the door, and close out cleanly, without extra admin.</p>
             </div>
 
             <div class="showcase-card">
                 <div class="showcase-content">
-                    <div class="showcase-badge">Fast Setup</div>
                     <h3>Create an Event in Minutes</h3>
                     <p>
                         Drop in the basics, add your lineup, and publish.
@@ -1523,7 +1440,6 @@
 
             <div class="showcase-card reverse">
                 <div class="showcase-content">
-                    <div class="showcase-badge">Door Control</div>
                     <h3>Know What’s Happening at the Door</h3>
                     <p>
                         See scans live, spot duplicates instantly, and track entry flow.
@@ -1557,7 +1473,6 @@
 
             <div class="showcase-card">
                 <div class="showcase-content">
-                    <div class="showcase-badge">Money Clarity</div>
                     <h3>Refunds and Reporting at Your Fingertips</h3>
                     <p>
                         Handle full or partial refunds yourself, right when you need to.
@@ -1591,7 +1506,6 @@
 
             <div class="showcase-card reverse">
                 <div class="showcase-content">
-                    <div class="showcase-badge">Smooth Entry</div>
                     <h3>Built-in Scanning</h3>
                     <p>
                         Validate tickets instantly and flag issues right away: duplicates, wrong event, refunded.
@@ -1629,7 +1543,6 @@
     <section class="platform-section" id="platform">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Complete Solution</div>
                 <h2>One Platform. Two Sides.</h2>
                 <p>Tools for venues & promoters. A smooth experience for guests.</p>
             </div>
@@ -1755,7 +1668,6 @@
     <section class="how-section" id="how">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Simple Process</div>
                 <h2>From Announcement to Doors Open in 4 Steps</h2>
                 <p>Get the event live, sell tickets, and run the door fast.</p>
             </div>
@@ -1948,6 +1860,100 @@
         if (howSection) {
             observer.observe(howSection);
         }
+
+        // Hero background phrase grid
+        (function () {
+            const normal = [
+                'Local concerts','Concerts','DIY concerts','Comedy shows','Writing workshops',
+                'Woodworking classes','Pottery classes','House shows','Open mic nights',
+                'Local theater productions','Poetry readings','Author talks','Book clubs',
+                'Dance classes','Yoga workshops','Breathwork sessions','Meditation circles',
+                'Sound baths','Painting nights','Figure drawing sessions','Craft workshops',
+                'Candle-making classes','Jewelry-making workshops','Glassblowing demos',
+                'Photography walks','Film screenings','Documentary nights','Short film festivals',
+                'Trivia nights','Karaoke nights','Game nights','Board game tournaments',
+                'Chess meetups','Video game tournaments','LAN parties','Cosplay meetups',
+                'Anime watch parties','Zine fairs','Art markets','Maker fairs',
+                'Vintage markets','Pop-up shops','Clothing swaps','Record swaps',
+                'Plant swaps','Seed exchanges','Farmers market events','Food pop-ups',
+                'Supper clubs',"Chef's table dinners",'Coffee cuppings','Tea ceremonies',
+                'Cocktail classes','Cooking classes','Baking classes','Fermentation classes',
+                'Nature walks','Guided hikes','Birdwatching tours','Kayaking meetups',
+                'Cycling groups','Running clubs','Fitness bootcamps','Self-defense classes',
+                'Martial arts seminars','Skate meetups','Climbing workshops','Wellness retreats',
+                'Community cleanups','Neighborhood block parties','School fundraisers',
+                'PTA events','Church events','Nonprofit galas','Benefit concerts',
+                'Memorial fundraisers','Mutual aid events','Recovery community events',
+                'Sober social events','Networking mixers','Startup meetups',
+                'Small business workshops','Creator meetups','Podcast live shows',
+                'Live interviews','Panel discussions','Career workshops','Resume clinics',
+                'Coding workshops','AI workshops','Language classes','Astronomy classes',
+                'History talks','Museum events','Gallery openings','Artist studio tours',
+                'Astrology classes','Salon education nights','Beer festivals','Wine festivals',
+                'Magic shows','Storytelling nights','Debate nights','Singles mixers',
+                'Speed dating events','Food festivals','School activities','Private events',
+                'Free events','Donations','Raffles','Air shows','Motorcycle shows',
+                'Train shows','Reptile shows','Equestrian classes','Bridal shows',
+                'Canoeing trips','Parenting classes','Youth camps','Science expos',
+                'Art expos','Robotics expos','History lectures','Renaissance events',
+                'Knitting classes','Rock concerts','Country concerts','Folk music',
+                'Indie concerts','Jazz festivals','Nightclubs','Silent discos',
+                'Discos','Roller derby','Acoustic shows'
+            ];
+            const fun = [
+                'Mushroom foraging walks','Dragon shows','Yoddling contests',
+                'Extraterrestrial meetups','Waterballon fights','Paid family reunions',
+                'Backyard wrestling matches','Thumb wars','Hot dog eating contests'
+            ];
+
+            // Interleave fun phrases evenly among normal ones
+            const combined = [];
+            const step = Math.floor(normal.length / (fun.length + 1));
+            let fi = 0;
+            normal.forEach((phrase, i) => {
+                combined.push({ text: phrase, isFun: false });
+                if (fi < fun.length && (i + 1) % step === 0) {
+                    combined.push({ text: fun[fi++], isFun: true });
+                }
+            });
+
+            const bg = document.getElementById('heroBg');
+            if (!bg) return;
+
+            // Fisher-Yates shuffle
+            for (let i = combined.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [combined[i], combined[j]] = [combined[j], combined[i]];
+            }
+
+            // Split phrases into rows and build scrolling marquee rows
+            const NUM_ROWS = 14;
+            const speeds = [56, 68, 52, 76, 60, 72, 48, 64, 58, 70, 54, 66, 62, 74];
+            const rows = Array.from({ length: NUM_ROWS }, () => []);
+            combined.forEach((phrase, i) => rows[i % NUM_ROWS].push(phrase));
+
+            const frag = document.createDocumentFragment();
+            rows.forEach((rowPhrases, rowIdx) => {
+                const rowEl = document.createElement('div');
+                rowEl.className = 'hero-bg-row';
+
+                const track = document.createElement('div');
+                track.className = 'hero-bg-row-inner';
+                track.style.animationDuration = speeds[rowIdx] + 's';
+
+                // Duplicate content for seamless loop
+                [...rowPhrases, ...rowPhrases].forEach(({ text, isFun }) => {
+                    const span = document.createElement('span');
+                    span.className = 'hero-bg-phrase' + (isFun ? ' fun' : '');
+                    span.textContent = text;
+                    track.appendChild(span);
+                });
+
+                rowEl.appendChild(track);
+                frag.appendChild(rowEl);
+            });
+            bg.appendChild(frag);
+        })();
 
         // Smooth scroll with pulse animation for platform cards
         document.querySelectorAll('a[href^="#"]').forEach(a => {
