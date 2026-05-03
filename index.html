@@ -61,6 +61,9 @@
             --bg: #FFFFFF;
             --bg-alt: #F8FAFC;
             --border: #E2E8F0;
+            --phrase-banner-h: 2.375rem;
+            /* Matches nav vertical size (padding + logo row) */
+            --nav-bar-h: 3.5rem;
         }
 
         body {
@@ -68,6 +71,59 @@
             color: var(--text);
             line-height: 1.6;
             background: var(--bg);
+        }
+
+        /* Phrase marquee under main nav */
+        .phrase-banner {
+            position: fixed;
+            top: var(--nav-bar-h);
+            left: 0;
+            right: 0;
+            height: var(--phrase-banner-h);
+            z-index: 1000;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .phrase-banner__inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .phrase-banner__track {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.75rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            animation: phraseBannerScroll 230s linear infinite;
+            will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .phrase-banner__track {
+                animation: none;
+                justify-content: center;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes phraseBannerScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .phrase-banner__phrase {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.02em;
+            line-height: 1.35;
         }
 
         /* Nav */
@@ -78,7 +134,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            z-index: 1001;
         }
 
         .nav-content {
@@ -136,60 +192,17 @@
         .hero-wrapper {
             position: relative;
             overflow: hidden;
-            /* Exactly tall enough for 14 rows × row-height + 13 gaps */
-            min-height: calc(14 * 1.8rem + 13 * 0.35rem);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 0.35rem;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
+            min-height: 0;
         }
-
-        .hero-bg-row {
-            overflow: hidden;
-            width: 100%;
-            text-align: center;
-            min-height: 1.8rem;
-        }
-
-        .hero-bg-row-inner {
-            display: inline-flex;
-            gap: 2rem;
-            white-space: nowrap;
-            animation: heroMarquee 32s linear infinite;
-            will-change: transform;
-        }
-
-        .hero-bg-row:nth-child(even) .hero-bg-row-inner {
-            animation-direction: reverse;
-        }
-
-        @keyframes heroMarquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        .hero-bg-phrase {
-            font-size: 0.96rem;
-            color: rgba(0, 0, 0, 0.8);
-            white-space: nowrap;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            line-height: 1.8;
-        }
-
 
         .hero {
             position: relative;
-            min-height: inherit;
+            flex: 1 1 auto;
+            min-height: 0;
             max-width: 1280px;
+            width: 100%;
             margin: 0 auto;
             text-align: center;
             z-index: 10;
@@ -197,30 +210,150 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: calc(4rem + 64px) 1.5rem 4rem;
+            padding: calc(4rem + var(--nav-bar-h) + var(--phrase-banner-h)) 1.5rem 1rem;
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            align-items: start;
+            gap: 1.5rem;
+        }
+
+        .hero-pledge {
+            width: min(100%, 640px);
+            margin: clamp(0.85rem, 3vw, 1.35rem) 0 0;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .hero .hero-pledge .hero-impact {
+            margin: 0;
+            font-size: clamp(0.76rem, 0.95vw + 0.48rem, 0.9375rem);
+            color: var(--text);
+            line-height: 1.55;
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        /* Phone mockup only at desktop; never show below 1024px. */
+        @media (max-width: 1023px) {
+            .hero-visual.hero-col-visual {
+                display: none;
+            }
+        }
+
+        .hero-visual img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.12));
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                align-items: stretch;
+                justify-content: flex-start;
+                text-align: center;
+                padding: calc(4rem + var(--nav-bar-h) + var(--phrase-banner-h)) 2rem clamp(1.5rem, 4vw, 2.75rem);
+            }
+
+            .hero-inner {
+                grid-template-columns: minmax(0, 1fr) auto;
+                column-gap: clamp(2rem, 4vw, 3.5rem);
+                row-gap: 0;
+                align-items: center;
+                justify-items: start;
+                width: 100%;
+                max-width: 1200px;
+            }
+
+            .hero-col-text {
+                text-align: center;
+                align-items: center;
+                justify-self: stretch;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+            }
+
+            .hero-visual.hero-col-visual {
+                display: block;
+                justify-self: end;
+            }
+
+            .hero-visual img {
+                max-width: min(320px, 28vw);
+                max-height: min(680px, 78vh);
+                width: auto;
+            }
+
+            .app-buttons {
+                justify-content: center;
+            }
+
+            .hero-disclaimer {
+                transform-origin: center center;
+            }
+        }
+
+        /* Left column: headline card then pledge underneath (outside .hero-content / container queries). */
+        .hero-col-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
         }
 
         .hero-content {
-            width: min(100%, 520px);
+            container-type: inline-size;
+            container-name: hero-cta-card;
+            width: min(100%, 560px);
             padding: 2.25rem 1.5rem;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 6vw, 4rem);
+
+
+        .hero h1.hero-tagline {
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
+            line-height: 1.18;
+            margin: 0 0 1rem;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            font-size: clamp(1.12rem, 0.58rem + 5.4vw, 2.5rem);
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, #4CAF50 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @supports (font-size: 1cqi) {
+            .hero h1.hero-tagline {
+                font-size: clamp(1.12rem, 0.52rem + 7.8cqi, 2.5rem);
+            }
+        }
+
+        .hero-tagline-accent {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .hero h2.hero-cta-text {
+            font-size: clamp(0.9rem, 0.86rem + 0.28vw, 1.125rem);
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.012em;
+            margin: 0 0 0.2rem;
+            color: var(--text);
         }
 
         .hero p.hero-impact {
@@ -240,10 +373,6 @@
             animation-delay: 0.6s;
         }
 
-        .unified-cta {
-            text-align: center;
-            padding: 1rem 1.5rem 0;
-        }
 
 
         .btn {
@@ -276,14 +405,6 @@
 
         .btn-secondary:hover {
             background: var(--primary-light);
-        }
-
-        .hero h2.hero-cta-text {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.25rem;
         }
 
         .hero-disclaimer {
@@ -319,7 +440,7 @@
 
         /* Problem/Solution Section */
         .problem-section {
-            padding: 3rem 1.5rem 5rem;
+            padding: 1.75rem 1.5rem 5rem;
             background: var(--bg);
         }
 
@@ -1167,10 +1288,6 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero h2.hero-cta-text {
-                font-size: 2rem;
-            }
-
             .comparison-grid,
             .platform-grid {
                 grid-template-columns: 1fr;
@@ -1201,14 +1318,18 @@
         }
 
         @media (max-width: 768px) {
-            .hero-bg-phrase {
-                font-size: 0.78rem;
+            :root {
+                /* Nav row is taller with hamburger (+ padding); was overlapping the marquee */
+                --nav-bar-h: calc(4.125rem + env(safe-area-inset-top, 0px));
+                --phrase-banner-h: 2.625rem;
             }
-            .hero-bg-row {
-                min-height: 1.5rem;
+
+            .phrase-banner__phrase {
+                font-size: 0.75rem;
             }
+
             .hero-wrapper {
-                min-height: calc(14 * 1.5rem + 13 * 0.35rem);
+                min-height: 0;
             }
             .nav-links {
                 display: none;
@@ -1218,12 +1339,16 @@
                 display: block;
             }
 
+            nav {
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+
             .hero {
-                padding-top: 5rem;
+                padding-top: calc(4.5rem + var(--nav-bar-h) + var(--phrase-banner-h));
             }
 
             .hero h2.hero-cta-text {
-                font-size: 1.5rem;
+                font-size: 0.9375rem;
             }
 
             .section-header h2 {
@@ -1308,6 +1433,12 @@
         </div>
     </nav>
 
+    <div class="phrase-banner" id="phraseBanner" aria-hidden="true">
+        <div class="phrase-banner__inner">
+            <div class="phrase-banner__track" id="phraseBannerTrack"></div>
+        </div>
+    </div>
+
     <!-- Mobile Navigation -->
     <div class="mobile-menu-overlay"></div>
     <div class="mobile-nav">
@@ -1323,31 +1454,36 @@
 
     <!-- Hero -->
     <div class="hero-wrapper">
-        <div class="hero-bg" id="heroBg"></div>
         <section class="hero">
-            <div class="hero-content">
-                <h1>
-                    <span class="hero-gradient">A simpler way to<br>sell tickets</span>
-                </h1>
-                <p class="hero-impact hero-impact-fadein">10% of our platform fees go to<br>local organizations supporting<br>drug and alcohol recovery 💚</p>
+            <div class="hero-inner">
+                <div class="hero-col-text">
+                    <div class="hero-content">
+                        <h1 class="hero-tagline">
+                            Online Ticketing App for Events, Shows, Classes, and <span class="hero-tagline-accent">everything in between</span>.
+                        </h1>
+                        <h2 class="hero-cta-text">
+                            Try for <span style="color: var(--primary);">free</span> today!<br>
+                            No contract. No start up costs.
+                        </h2>
+                        <p class="hero-disclaimer">*Payment processing fees apply.</p>
+                        <div class="app-buttons">
+                            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
+                                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
+                                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
+                            </a>
+                        </div>
+                    </div>
+                    <aside class="hero-pledge">
+                        <p class="hero-impact hero-impact-fadein">OpenSeat pledges 10% of platform fees to support local recovery programs fighting addiction 💚</p>
+                    </aside>
+                </div>
+                <div class="hero-col-visual hero-visual" aria-hidden="true">
+                    <img src="assets/images/hero-phone-mockup.png" alt="" width="450" height="920" decoding="async">
+                </div>
             </div>
         </section>
-    </div>
-
-    <div class="unified-cta">
-        <h2 class="hero-cta-text">
-            Try for <span style="color: var(--primary);">free</span> today!<br>
-            No contract. No start up costs.
-        </h2>
-        <p class="hero-disclaimer">*Payment processing fees apply.</p>
-        <div class="app-buttons">
-            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
-                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
-                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
-            </a>
-        </div>
     </div>
 
     <!-- Problem / Solution -->
@@ -1355,7 +1491,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Unified Experience</h2>
-                <p>Most venues and promoters stitch together ticketing, the door, and payouts. We built one place to run the whole night.</p>
+                <p>We built one place to run the whole event.</p>
             </div>
             <div class="comparison-grid">
                 <div class="comparison-card solution">
@@ -1862,24 +1998,24 @@
             observer.observe(howSection);
         }
 
-        // Hero background phrase grid
-        (function () {
+        // Phrase marquee (same corpus + shuffle as legacy hero marquee)
+        (function initPhraseBanner() {
             const normal = [
                 'Local concerts','Concerts','DIY concerts','Comedy shows','Writing workshops',
                 'Woodworking classes','Pottery classes','House shows','Open mic nights',
                 'Local theater productions','Poetry readings','Author talks','Book clubs',
                 'Dance classes','Yoga workshops','Breathwork sessions','Meditation circles',
-                'Sound baths','Painting nights','Figure drawing sessions','Craft workshops',
-                'Candle-making classes','Jewelry-making workshops','Glassblowing demos',
-                'Photography walks','Film screenings','Documentary nights','Short film festivals',
+                'Sound baths','Painting classes','Craft workshops',
+                'Candle-making classes','Jewelry-making workshops','Glassblowing classes',
+                'Photography lessons','Film screenings','Documentary nights','Short film festivals',
                 'Trivia nights','Karaoke nights','Game nights','Board game tournaments',
-                'Chess meetups','Video game tournaments','LAN parties','Cosplay meetups',
+                'Chess meetups','Video game tournaments','LAN parties',
                 'Anime watch parties','Zine fairs','Art markets','Maker fairs',
                 'Vintage markets','Pop-up shops','Clothing swaps','Record swaps',
                 'Plant swaps','Seed exchanges','Farmers market events','Food pop-ups',
                 'Supper clubs',"Chef's table dinners",'Coffee cuppings','Tea ceremonies',
                 'Cocktail classes','Cooking classes','Baking classes','Fermentation classes',
-                'Nature walks','Guided hikes','Birdwatching tours','Kayaking meetups',
+                'Nature walks','Guided hikes','Birdwatching tours',
                 'Cycling groups','Running clubs','Fitness bootcamps','Self-defense classes',
                 'Martial arts seminars','Skate meetups','Climbing workshops','Wellness retreats',
                 'Community cleanups','Neighborhood block parties','School fundraisers',
@@ -1895,11 +2031,11 @@
                 'Speed dating events','Food festivals','School activities','Private events',
                 'Free events','Donations','Raffles','Air shows','Motorcycle shows',
                 'Train shows','Reptile shows','Equestrian classes','Bridal shows',
-                'Canoeing trips','Parenting classes','Youth camps','Science expos',
-                'Art expos','Robotics expos','History lectures','Renaissance events',
+                'Canoeing guides','Parenting classes','Youth camps','Science expos',
+                'Art expos','Robotics expos','Renaissance events',
                 'Knitting classes','Rock concerts','Country concerts','Folk music',
                 'Indie concerts','Jazz festivals','Nightclubs','Silent discos',
-                'Discos','Roller derby','Acoustic shows'
+                'Roller derby','Acoustic shows'
             ];
             const fun = [
                 'Mushroom foraging walks','Dragon shows','Yoddling contests',
@@ -1907,53 +2043,39 @@
                 'Backyard wrestling matches','Thumb wars','Hot dog eating contests'
             ];
 
-            // Interleave fun phrases evenly among normal ones
             const combined = [];
             const step = Math.floor(normal.length / (fun.length + 1));
             let fi = 0;
             normal.forEach((phrase, i) => {
-                combined.push({ text: phrase, isFun: false });
+                combined.push(phrase);
                 if (fi < fun.length && (i + 1) % step === 0) {
-                    combined.push({ text: fun[fi++], isFun: true });
+                    combined.push(fun[fi++]);
                 }
             });
 
-            const bg = document.getElementById('heroBg');
-            if (!bg) return;
-
-            // Fisher-Yates shuffle
             for (let i = combined.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [combined[i], combined[j]] = [combined[j], combined[i]];
             }
 
-            // Split phrases into rows and build scrolling marquee rows
-            const NUM_ROWS = 14;
-            const speeds = [56, 68, 52, 76, 60, 72, 48, 64, 58, 70, 54, 66, 62, 74];
-            const rows = Array.from({ length: NUM_ROWS }, () => []);
-            combined.forEach((phrase, i) => rows[i % NUM_ROWS].push(phrase));
+            const track = document.getElementById('phraseBannerTrack');
+            if (!track) return;
 
             const frag = document.createDocumentFragment();
-            rows.forEach((rowPhrases, rowIdx) => {
-                const rowEl = document.createElement('div');
-                rowEl.className = 'hero-bg-row';
 
-                const track = document.createElement('div');
-                track.className = 'hero-bg-row-inner';
-                track.style.animationDuration = speeds[rowIdx] + 's';
-
-                // Duplicate content for seamless loop
-                [...rowPhrases, ...rowPhrases].forEach(({ text, isFun }) => {
+            function appendRun(list) {
+                list.forEach((text) => {
                     const span = document.createElement('span');
-                    span.className = 'hero-bg-phrase' + (isFun ? ' fun' : '');
+                    span.className = 'phrase-banner__phrase';
                     span.textContent = text;
-                    track.appendChild(span);
+                    frag.appendChild(span);
                 });
+            }
 
-                rowEl.appendChild(track);
-                frag.appendChild(rowEl);
-            });
-            bg.appendChild(frag);
+            appendRun(combined);
+            appendRun(combined);
+
+            track.appendChild(frag);
         })();
 
         // Smooth scroll with pulse animation for platform cards
