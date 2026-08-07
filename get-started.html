@@ -39,7 +39,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -57,37 +57,55 @@
             --text: #0F172A;
             --text-secondary: #64748B;
             --muted: #64748B;
-            --bg: #FFFFFF;
-            --bg-alt: #F8FAFC;
+            --bg: #FFF8E7;
+            --bg-alt: #FFFFFF;
             --border: #E2E8F0;
             --success: #10B981;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Nunito', sans-serif;
             color: var(--text);
             line-height: 1.6;
             background: var(--bg);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+        }
+
+        h3, h4, h5, h6 {
+            font-weight: 500;
         }
 
         /* Nav */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            padding: max(1rem, env(safe-area-inset-top, 0px)) 1.25rem 0;
+            background: transparent;
+            pointer-events: none;
         }
 
         .nav-content {
-            max-width: 1280px;
+            pointer-events: auto;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 0.75rem 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--bg);
+            border-radius: 9999px;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.7);
         }
 
         .logo {
@@ -97,7 +115,7 @@
         }
 
         .logo img {
-            height: 32px;
+            height: 28.8px;
             width: auto;
         }
 
@@ -123,8 +141,8 @@
         .nav-cta {
             background: var(--primary);
             color: white !important;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.675rem 1.26rem;
+            border-radius: 9999px;
             font-size: 0.875rem;
         }
 
@@ -141,7 +159,7 @@
 
         .hero h1 {
             font-size: 2.75rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 1rem;
             color: var(--text);
         }
@@ -157,7 +175,29 @@
             font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-store-link {
+            display: inline-block;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .app-store-link:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .app-store-link img {
+            height: 50px;
+            width: auto;
         }
 
         /* Main Content */
@@ -174,7 +214,7 @@
 
         .infographics-section h2 {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
@@ -239,7 +279,7 @@
 
         .timeline-content h3 {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
@@ -275,7 +315,7 @@
 
         .highlight-box h3 {
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 0.75rem;
         }
 
@@ -476,6 +516,14 @@
     <section class="hero">
         <h1>Start Selling Tickets <span class="hero-gradient">Today</span></h1>
         <p>Get set up in minutes and use powerful tools that make running events effortless.</p>
+        <div class="app-buttons">
+            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
+                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
+                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
+            </a>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -597,8 +645,6 @@
                     <li><a href="index.html#organizers">For Organizers</a></li>
                     <li><a href="index.html#attendees">For Attendees</a></li>
                     <li><a href="index.html#how">How It Works</a></li>
-                    <li><a href="small-event-organizer-platform.html">Small Event Organizer Platform</a></li>
-                    <li><a href="eventbrite-alternative-small-events.html">Eventbrite Alternative</a></li>
                 </ul>
             </div>
             <div class="footer-section">

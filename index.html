@@ -41,7 +41,7 @@
     <link rel="preload" as="image" href="assets/images/new_logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -58,92 +58,58 @@
             --accent-light: #EFF6FF;
             --text: #0F172A;
             --text-secondary: #64748B;
-            --bg: #FFFFFF;
-            --bg-alt: #F8FAFC;
+            --nav-text: #404651;
+            --bg: #FFF8E7;
+            --bg-alt: #FFFFFF;
             --border: #E2E8F0;
-            --phrase-banner-h: 2.375rem;
-            /* Matches nav vertical size (padding + logo row) */
-            --nav-bar-h: 3.5rem;
+            --nav-offset-top: 1rem;
+            --layout-width: 90%;
+            --layout-inset: 5vw;
+            --panel-radius: 28px;
+            --button-radius: 8px;
+            /* Matches nav bar height (offset + content row) */
+            --nav-bar-h: calc(var(--nav-offset-top) + 4.25rem);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Nunito', sans-serif;
             color: var(--text);
             line-height: 1.6;
             background: var(--bg);
         }
 
-        /* Phrase marquee under main nav */
-        .phrase-banner {
-            position: fixed;
-            top: var(--nav-bar-h);
-            left: 0;
-            right: 0;
-            height: var(--phrase-banner-h);
-            z-index: 1000;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-            pointer-events: none;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Serif Pro', serif;
         }
 
-        .phrase-banner__inner {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .phrase-banner__track {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.75rem;
-            flex-wrap: nowrap;
-            white-space: nowrap;
-            animation: phraseBannerScroll 230s linear infinite;
-            will-change: transform;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .phrase-banner__track {
-                animation: none;
-                justify-content: center;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes phraseBannerScroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        .phrase-banner__phrase {
-            font-size: 0.8125rem;
+        h1, h2 {
             font-weight: 600;
-            color: var(--primary);
-            letter-spacing: 0.02em;
-            line-height: 1.35;
+        }
+
+        h3, h4, h5, h6 {
+            font-weight: 500;
         }
 
         /* Nav */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            left: 0;
+            right: 0;
             z-index: 1001;
+            padding: max(var(--nav-offset-top), env(safe-area-inset-top, 0px)) 0 0;
+            background: var(--bg);
         }
 
         .nav-content {
-            max-width: 1280px;
+            width: var(--layout-width);
+            max-width: none;
             margin: 0 auto;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: transparent;
         }
 
         .logo {
@@ -153,7 +119,7 @@
         }
 
         .logo img {
-            height: 32px;
+            height: 28.8px;
             width: auto;
         }
 
@@ -166,7 +132,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-secondary);
+            color: var(--nav-text);
             font-weight: 500;
             font-size: 0.9rem;
             transition: color 0.2s;
@@ -179,8 +145,8 @@
         .nav-cta {
             background: var(--primary);
             color: white !important;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.675rem 1.26rem;
+            border-radius: var(--button-radius);
             font-size: 0.875rem;
         }
 
@@ -201,179 +167,84 @@
             position: relative;
             flex: 1 1 auto;
             min-height: 0;
-            max-width: 1280px;
-            width: 100%;
+            width: var(--layout-width);
+            max-width: none;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
             z-index: 10;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: calc(4rem + var(--nav-bar-h) + var(--phrase-banner-h)) 1.5rem 1rem;
+            align-items: stretch;
+            padding: calc(7rem + var(--nav-bar-h)) 0 4rem;
         }
 
         .hero-inner {
             width: 100%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0;
+        }
+
+        .hero-row {
             display: grid;
             grid-template-columns: 1fr;
-            justify-items: center;
-            align-items: start;
             gap: 1.5rem;
+            align-items: start;
         }
 
-        .hero-pledge {
-            width: min(100%, 640px);
-            margin: clamp(0.85rem, 3vw, 1.35rem) 0 0;
-            padding: 0 1rem;
-            box-sizing: border-box;
-            text-align: center;
+        .hero-col-headline {
+            min-width: 0;
         }
 
-        .hero .hero-pledge .hero-impact {
+        .hero-supporting-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #000000;
             margin: 0;
-            font-size: clamp(0.76rem, 0.95vw + 0.48rem, 0.9375rem);
-            color: var(--text);
-            line-height: 1.55;
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        /* Phone mockup only at desktop; never show below 1024px. */
-        @media (max-width: 1023px) {
-            .hero-visual.hero-col-visual {
-                display: none;
-            }
-        }
-
-        .hero-visual img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.12));
+            max-width: 36ch;
         }
 
         @media (min-width: 1024px) {
             .hero {
-                align-items: stretch;
-                justify-content: flex-start;
-                text-align: center;
-                padding: calc(4rem + var(--nav-bar-h) + var(--phrase-banner-h)) 2rem clamp(1.5rem, 4vw, 2.75rem);
+                padding: calc(8.5rem + var(--nav-bar-h)) 0 5rem;
             }
 
-            .hero-inner {
-                grid-template-columns: minmax(0, 1fr) auto;
-                column-gap: clamp(2rem, 4vw, 3.5rem);
-                row-gap: 0;
-                align-items: center;
-                justify-items: start;
-                width: 100%;
-                max-width: 1200px;
+            .hero-row {
+                grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.75fr);
+                gap: clamp(1.25rem, 2.5vw, 2rem);
+                align-items: end;
             }
 
-            .hero-col-text {
-                text-align: center;
-                align-items: center;
-                justify-self: stretch;
-                width: 100%;
-                min-width: 0;
-                max-width: none;
+            .hero-supporting-text {
+                font-size: 1.35rem;
             }
 
-            .hero-visual.hero-col-visual {
-                display: block;
-                justify-self: end;
-            }
-
-            .hero-visual img {
-                max-width: min(320px, 28vw);
-                max-height: min(680px, 78vh);
-                width: auto;
-            }
-
-            .app-buttons {
-                justify-content: center;
-            }
-
-            .hero-disclaimer {
-                transform-origin: center center;
+            .hero h1.hero-tagline {
+                font-size: clamp(3.25rem, 4.5vw, 4.5rem);
             }
         }
-
-        /* Left column: headline card then pledge underneath (outside .hero-content / container queries). */
-        .hero-col-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            width: 100%;
-        }
-
-        .hero-content {
-            container-type: inline-size;
-            container-name: hero-cta-card;
-            width: min(100%, 560px);
-            padding: 2.25rem 1.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            margin-bottom: 0;
-        }
-
-
 
         .hero h1.hero-tagline {
-            font-weight: 800;
-            line-height: 1.18;
-            margin: 0 0 1rem;
-            letter-spacing: -0.025em;
+            font-weight: 600;
+            line-height: 1.12;
+            margin: 0;
+            letter-spacing: -0.03em;
             color: var(--text);
-            font-size: clamp(1.12rem, 0.58rem + 5.4vw, 2.5rem);
-        }
-
-        @supports (font-size: 1cqi) {
-            .hero h1.hero-tagline {
-                font-size: clamp(1.12rem, 0.52rem + 7.8cqi, 2.5rem);
-            }
+            font-size: clamp(2.5rem, 5.2vw, 3.5rem);
         }
 
         .hero-tagline-accent {
             color: var(--primary);
-            font-weight: 800;
+            font-weight: 600;
         }
 
-        .hero h2.hero-cta-text {
-            font-size: clamp(0.9rem, 0.86rem + 0.28vw, 1.125rem);
-            font-weight: 700;
-            line-height: 1.4;
-            letter-spacing: -0.012em;
-            margin: 0 0 0.2rem;
-            color: var(--text);
+        .hero-accent {
+            color: var(--primary);
+            text-decoration: underline;
+            text-decoration-thickness: 0.06em;
+            text-underline-offset: 0.1em;
         }
-
-        .hero p.hero-impact {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-impact-fadein {
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.6s;
-        }
-
-
 
         .btn {
             padding: 1rem 2rem;
@@ -407,41 +278,42 @@
             background: var(--primary-light);
         }
 
-        .hero-disclaimer {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            transform: scale(0.75);
-            transform-origin: center center;
-        }
-
-        .app-buttons {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .app-store-link {
-            display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .app-store-link:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        .app-store-link img {
-            height: 50px;
-            width: auto;
-        }
-
         /* Problem/Solution Section */
         .problem-section {
-            padding: 1.75rem 1.5rem 5rem;
+            padding: 4rem 0 5rem;
             background: var(--bg);
+        }
+
+        /* Desert sand panel that expands to full-bleed on scroll */
+        .unified-panel {
+            --reveal: 0;
+            background: #D2BE98;
+            margin-left: calc(var(--layout-inset) * (1 - var(--reveal)));
+            margin-right: calc(var(--layout-inset) * (1 - var(--reveal)));
+            border-radius: calc(var(--panel-radius) * (1 - var(--reveal)));
+            padding: clamp(2.5rem, 5vw, 5rem) 0;
+            min-height: calc(var(--reveal) * (100svh - var(--nav-bar-h)));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            will-change: margin, border-radius, min-height;
+        }
+
+        .unified-panel .container {
+            width: calc(100% * (1 - var(--reveal)) + var(--layout-width) * var(--reveal));
+            max-width: none;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-inline: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .unified-panel {
+                --reveal: 1;
+            }
         }
 
         .container {
@@ -456,7 +328,7 @@
 
         .section-header h2 {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
         }
@@ -468,78 +340,132 @@
             margin: 0 auto;
         }
 
-        /* Comparison Grid */
-        .comparison-grid {
+        /* Unified Experience layout */
+        .unified-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .comparison-card {
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-        }
-
-        .comparison-card.problem {
-            background: #F8FAFC;
-            border-color: #CBD5E1;
-        }
-
-        .comparison-card.solution {
-            background: var(--primary-light);
-            border-color: var(--primary);
-        }
-
-        .comparison-card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            display: flex;
+            grid-template-columns: 0.5fr 1.65fr;
+            gap: clamp(1.25rem, 3vw, 2.5rem);
             align-items: center;
-            gap: 0.75rem;
+            justify-items: center;
+            width: 100%;
+            max-width: min(100%, 2200px);
+            margin: 0 auto;
         }
 
-        .comparison-card.problem h3 {
-            color: #64748B;
+        .unified-panel .unified-header {
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
         }
 
-        .comparison-card.solution h3 {
-            color: var(--primary);
+        .unified-panel .unified-header h2 {
+            font-size: 3.25rem;
+            font-weight: 600;
+            margin-bottom: 0.65rem;
+            letter-spacing: -0.02em;
         }
 
-        .comparison-card ul {
-            list-style: none;
+        .unified-panel .unified-header p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 380px;
+            margin: 0 auto;
         }
 
-        .comparison-card li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .unified-panel .unified-header .nav-cta {
+            display: inline-block;
+            margin-top: 1.15rem;
+            text-decoration: none;
         }
 
-        .comparison-card.problem li::before {
-            content: '✕';
-            color: #94A3B8;
-            font-weight: 700;
-            flex-shrink: 0;
+        /*
+            Device mockup: bezel PNG (transparent screen hole) layered over
+            a separate screenshot PNG. To swap screens later, only change the
+            .device-screen img src paths in the HTML below:
+              - assets/images/unified-mac-screen.png
+              - assets/images/unified-iphone-screen.png
+
+            Sizing notes (industry pattern for SaaS hero mockups):
+            - Laptop is the primary device (~100% of showcase width)
+            - Phone is supporting (~18–22% of laptop width), overlapped ~25–35%
+            - Same product on both screens; laptop leads, phone adds depth
+        */
+        .unified-device-showcase {
+            position: relative;
+            width: 100%;
+            max-width: 2040px;
+            margin: 0 auto;
+            padding: 0 1rem 1.25rem 0;
         }
 
-        .comparison-card.solution li::before {
-            content: '✓';
-            color: var(--primary);
-            font-weight: 700;
-            flex-shrink: 0;
+        .device-frame {
+            position: relative;
+            width: 100%;
+            line-height: 0;
+        }
+
+        .device-frame--mac {
+            filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.16));
+        }
+
+        .device-frame--iphone {
+            position: absolute;
+            right: 11%;
+            bottom: 6%;
+            width: 19%;
+            max-width: 370px;
+            z-index: 2;
+            filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.24));
+        }
+
+        /* Screenshot sits in the bezel's transparent hole */
+        .device-screen {
+            position: absolute;
+            overflow: hidden;
+            background: #0a0a0a;
+            z-index: 0;
+        }
+
+        .device-frame--mac .device-screen {
+            top: 11.34%;
+            left: 10.83%;
+            width: 78.34%;
+            height: 77.32%;
+            border-radius: 1.2% / 1.8%;
+        }
+
+        .device-frame--iphone .device-screen {
+            top: 3.04%;
+            left: 5.33%;
+            width: 89.33%;
+            height: 94.46%;
+            border-radius: 14% / 6.5%;
+        }
+
+        .device-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        /* Bezel overlay (must stay above the screenshot) */
+        .device-bezel {
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: block;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
         }
 
         /* Feature Showcase - Full Width Cards */
         .showcase-section {
             padding: 5rem 1.5rem;
-            background: var(--bg-alt);
+            background: var(--bg);
         }
 
         .showcase-card {
@@ -571,7 +497,7 @@
 
         .showcase-content h3 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
         }
@@ -691,7 +617,7 @@
 
         .platform-card-header h3 {
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
@@ -807,7 +733,7 @@
         /* How It Works */
         .how-section {
             padding: 5rem 1.5rem;
-            background: var(--bg-alt);
+            background: var(--bg);
             overflow: hidden;
         }
 
@@ -963,7 +889,7 @@
 
         .step-card-back-content h4 {
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 0.35rem;
         }
 
@@ -1016,7 +942,7 @@
 
         .step-card-front h3 {
             font-size: 1.05rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 0.4rem;
         }
 
@@ -1054,7 +980,7 @@
 
         .cta-section h2 {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
@@ -1183,7 +1109,7 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--text);
+            color: var(--nav-text);
             padding: 0.5rem;
             z-index: 1002;
         }
@@ -1238,7 +1164,7 @@
             display: block;
             padding: 1rem 0;
             text-decoration: none;
-            color: var(--text);
+            color: var(--nav-text);
             font-weight: 500;
             font-size: 1.1rem;
             border-bottom: 1px solid var(--border);
@@ -1256,7 +1182,7 @@
             background: var(--primary);
             color: white;
             padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            border-radius: var(--button-radius);
             border-bottom: none;
             text-align: center;
             width: 100%;
@@ -1288,7 +1214,7 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .comparison-grid,
+            .unified-layout,
             .platform-grid {
                 grid-template-columns: 1fr;
             }
@@ -1319,13 +1245,7 @@
 
         @media (max-width: 768px) {
             :root {
-                /* Nav row is taller with hamburger (+ padding); was overlapping the marquee */
-                --nav-bar-h: calc(4.125rem + env(safe-area-inset-top, 0px));
-                --phrase-banner-h: 2.625rem;
-            }
-
-            .phrase-banner__phrase {
-                font-size: 0.75rem;
+                --nav-bar-h: calc(var(--nav-offset-top) + 4.5rem + env(safe-area-inset-top, 0px));
             }
 
             .hero-wrapper {
@@ -1339,20 +1259,28 @@
                 display: block;
             }
 
-            nav {
-                padding-top: env(safe-area-inset-top, 0px);
-            }
-
             .hero {
-                padding-top: calc(4.5rem + var(--nav-bar-h) + var(--phrase-banner-h));
+                padding-top: calc(6.5rem + var(--nav-bar-h));
             }
 
-            .hero h2.hero-cta-text {
-                font-size: 0.9375rem;
+            .section-header h2,
+            .unified-panel .unified-header h2 {
+                font-size: 2.75rem;
             }
 
-            .section-header h2 {
-                font-size: 1.875rem;
+            .unified-panel .unified-header p {
+                font-size: 0.98rem;
+            }
+
+            .unified-device-showcase {
+                max-width: 1440px;
+                padding-right: 0.5rem;
+            }
+
+            .device-frame--iphone {
+                width: 21%;
+                max-width: 290px;
+                right: 8%;
             }
 
             .showcase-content h3 {
@@ -1427,17 +1355,11 @@
                 <li><a href="#organizers">For Organizers</a></li>
                 <li><a href="#attendees">For Attendees</a></li>
                 <li><a href="#how">How It Works</a></li>
-<li><a href="get-started.html" class="nav-cta">Sell Tickets</a></li>
+                <li><a href="get-started.html" class="nav-cta">Sell Tickets</a></li>
         </ul>
         <button class="mobile-menu" aria-label="Open menu">☰</button>
         </div>
     </nav>
-
-    <div class="phrase-banner" id="phraseBanner" aria-hidden="true">
-        <div class="phrase-banner__inner">
-            <div class="phrase-banner__track" id="phraseBannerTrack"></div>
-        </div>
-    </div>
 
     <!-- Mobile Navigation -->
     <div class="mobile-menu-overlay"></div>
@@ -1456,31 +1378,17 @@
     <div class="hero-wrapper">
         <section class="hero">
             <div class="hero-inner">
-                <div class="hero-col-text">
-                    <div class="hero-content">
+                <div class="hero-row">
+                    <div class="hero-col hero-col-headline">
                         <h1 class="hero-tagline">
-                            Online Ticketing App for Events, Shows, Classes, and <span class="hero-tagline-accent">everything in between</span>.
+                            Software designed to<br>
+                            <span class="hero-accent">manage events</span> & <span class="hero-accent">sell tickets</span><br>
+                             - putting simplicity first
                         </h1>
-                        <h2 class="hero-cta-text">
-                            Try for <span style="color: var(--primary);">free</span> today!<br>
-                            No contract. No start up costs.
-                        </h2>
-                        <p class="hero-disclaimer">*Payment processing fees apply.</p>
-                        <div class="app-buttons">
-                            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
-                                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
-                                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
-                            </a>
-                        </div>
                     </div>
-                    <aside class="hero-pledge">
-                        <p class="hero-impact hero-impact-fadein">OpenSeat pledges 10% of platform fees to support local recovery programs fighting addiction 💚</p>
-                    </aside>
-                </div>
-                <div class="hero-col-visual hero-visual" aria-hidden="true">
-                    <img src="assets/images/hero-phone-mockup.png" alt="" width="450" height="920" decoding="async">
+                    <div class="hero-col hero-col-supporting">
+                        <p class="hero-supporting-text">Live experiences are in demand. OpenSeat helps venues bring those moments to life with simple, modern software fit for today’s audiences.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1488,48 +1396,73 @@
 
     <!-- Problem / Solution -->
     <section class="problem-section">
+        <div class="unified-panel" id="unifiedPanel">
         <div class="container">
-            <div class="section-header">
-                <h2>Unified Experience</h2>
-                <p>We built one place to run the whole event.</p>
-            </div>
-            <div class="comparison-grid">
-                <div class="comparison-card solution">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                        OpenSeat
-                    </h3>
-                    <ul>
-                        <li>One system to create, sell, scan, refund, and reconcile</li>
-                        <li>Live door view so you always know what’s happening</li>
-                        <li>Handle full or partial refunds in seconds</li>
-                        <li>No contracts. Works for one-offs or full calendars</li>
-                        
-                        <li>Clear reporting so payouts never feel like a mystery</li>
-                    </ul>
+            <div class="unified-layout">
+                <div class="unified-header">
+                    <h2>Unified Experience</h2>
+                    <p>The most modern ticketing platform. Ditch legacy hardware for our built-in ticket scanner and box office features.</p>
+                    <a href="#features" class="nav-cta">Read More</a>
                 </div>
-                <div class="comparison-card problem">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="15" y1="9" x2="9" y2="15"/>
-                            <line x1="9" y1="9" x2="15" y2="15"/>
-                        </svg>
-                        Legacy Ticketing
-                    </h3>
-                    <ul>
-                        <li>Ticketing, the door, and payouts live in different tools</li>
-                        <li>No simple way to see who’s actually in the building</li>
-                        <li>Refunds turn into emails, delays, and back-and-forth</li>
-                        <li>Listings take too long to write and keep updated</li>
-                        
-                        <li>You’re guessing once doors open</li>
-                    </ul>
+                <!--
+                    Unified Experience device mockup
+                    --------------------------------
+                    Swap screenshots anytime by replacing these two files
+                    (same filenames) or changing the <img> src paths below:
+                      assets/images/unified-mac-screen.png
+                      assets/images/unified-iphone-screen.png
+                    Bezel frames stay put:
+                      assets/images/mac-bezel.png
+                      assets/images/iphone-bezel.png
+                -->
+                <div class="unified-device-showcase">
+                    <div class="device-frame device-frame--mac">
+                        <div class="device-screen">
+                            <img
+                                src="assets/images/unified-mac-screen.png"
+                                alt="SeatFlow dashboard on MacBook"
+                                loading="lazy"
+                                decoding="async"
+                                width="1024"
+                                height="643"
+                            >
+                        </div>
+                        <img
+                            class="device-bezel"
+                            src="assets/images/mac-bezel.png"
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                            width="3860"
+                            height="2540"
+                        >
+                    </div>
+                    <div class="device-frame device-frame--iphone">
+                        <div class="device-screen">
+                            <img
+                                src="assets/images/unified-iphone-screen.png"
+                                alt="SeatFlow dashboard on iPhone"
+                                loading="lazy"
+                                decoding="async"
+                                width="485"
+                                height="1024"
+                            >
+                        </div>
+                        <img
+                            class="device-bezel"
+                            src="assets/images/iphone-bezel.png"
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                            width="1350"
+                            height="2760"
+                        >
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -1928,8 +1861,6 @@
                     <li><a href="#organizers">For Organizers</a></li>
                     <li><a href="#attendees">For Attendees</a></li>
                     <li><a href="#how">How It Works</a></li>
-                    <li><a href="small-event-organizer-platform.html">Small Event Organizer Platform</a></li>
-                    <li><a href="eventbrite-alternative-small-events.html">Eventbrite Alternative</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -2000,84 +1931,34 @@
             observer.observe(howSection);
         }
 
-        // Phrase marquee (same corpus + shuffle as legacy hero marquee)
-        (function initPhraseBanner() {
-            const normal = [
-                'Local concerts','Concerts','DIY concerts','Comedy shows','Writing workshops',
-                'Woodworking classes','Pottery classes','House shows','Open mic nights',
-                'Local theater productions','Poetry readings','Author talks','Book clubs',
-                'Dance classes','Yoga workshops','Breathwork sessions','Meditation circles',
-                'Sound baths','Painting classes','Craft workshops',
-                'Candle-making classes','Jewelry-making workshops','Glassblowing classes',
-                'Photography lessons','Film screenings','Documentary nights','Short film festivals',
-                'Trivia nights','Karaoke nights','Game nights','Board game tournaments',
-                'Chess meetups','Video game tournaments','LAN parties',
-                'Anime watch parties','Zine fairs','Art markets','Maker fairs',
-                'Vintage markets','Pop-up shops','Clothing swaps','Record swaps',
-                'Plant swaps','Seed exchanges','Farmers market events','Food pop-ups',
-                'Supper clubs',"Chef's table dinners",'Coffee cuppings','Tea ceremonies',
-                'Cocktail classes','Cooking classes','Baking classes','Fermentation classes',
-                'Nature walks','Guided hikes','Birdwatching tours',
-                'Cycling groups','Running clubs','Fitness bootcamps','Self-defense classes',
-                'Martial arts seminars','Skate meetups','Climbing workshops','Wellness retreats',
-                'Community cleanups','Neighborhood block parties','School fundraisers',
-                'PTA events','Church events','Nonprofit galas','Benefit concerts',
-                'Memorial fundraisers','Mutual aid events','Recovery community events',
-                'Sober social events','Networking mixers','Startup meetups',
-                'Small business workshops','Creator meetups','Podcast live shows',
-                'Live interviews','Panel discussions','Career workshops','Resume clinics',
-                'Coding workshops','AI workshops','Language classes','Astronomy classes',
-                'History talks','Museum events','Gallery openings','Artist studio tours',
-                'Astrology classes','Salon education nights','Beer festivals','Wine festivals',
-                'Magic shows','Storytelling nights','Debate nights','Singles mixers',
-                'Speed dating events','Food festivals','School activities','Private events',
-                'Free events','Donations','Raffles','Air shows','Motorcycle shows',
-                'Train shows','Reptile shows','Equestrian classes','Bridal shows',
-                'Canoeing guides','Parenting classes','Youth camps','Science expos',
-                'Art expos','Robotics expos','Renaissance events',
-                'Knitting classes','Rock concerts','Country concerts','Folk music',
-                'Indie concerts','Jazz festivals','Nightclubs','Silent discos',
-                'Roller derby','Acoustic shows'
-            ];
-            const fun = [
-                'Mushroom foraging walks','Dragon shows','Yoddling contests',
-                'Extraterrestrial meetups','Waterballon fights','Paid family reunions',
-                'Backyard wrestling matches','Thumb wars','Hot dog eating contests'
-            ];
+        // Unified Experience panel: expand desert-sand container to full-bleed on scroll
+        (function initUnifiedPanelReveal() {
+            const panel = document.getElementById('unifiedPanel');
+            if (!panel) return;
+            const section = panel.closest('.problem-section');
+            let ticking = false;
 
-            const combined = [];
-            const step = Math.floor(normal.length / (fun.length + 1));
-            let fi = 0;
-            normal.forEach((phrase, i) => {
-                combined.push(phrase);
-                if (fi < fun.length && (i + 1) % step === 0) {
-                    combined.push(fun[fi++]);
+            function update() {
+                ticking = false;
+                const rect = section.getBoundingClientRect();
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                const start = vh * 0.9;   // begins revealing as section enters
+                const end = vh * 0.35;    // fully revealed near upper third
+                let progress = (start - rect.top) / (start - end);
+                progress = Math.min(1, Math.max(0, progress));
+                panel.style.setProperty('--reveal', progress.toFixed(4));
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    ticking = true;
+                    window.requestAnimationFrame(update);
                 }
-            });
-
-            for (let i = combined.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [combined[i], combined[j]] = [combined[j], combined[i]];
             }
 
-            const track = document.getElementById('phraseBannerTrack');
-            if (!track) return;
-
-            const frag = document.createDocumentFragment();
-
-            function appendRun(list) {
-                list.forEach((text) => {
-                    const span = document.createElement('span');
-                    span.className = 'phrase-banner__phrase';
-                    span.textContent = text;
-                    frag.appendChild(span);
-                });
-            }
-
-            appendRun(combined);
-            appendRun(combined);
-
-            track.appendChild(frag);
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll, { passive: true });
+            update();
         })();
 
         // Smooth scroll with pulse animation for platform cards
