@@ -99,17 +99,9 @@ This guide provides step-by-step instructions for deploying the OpenSeat website
    - Replace `GA_MEASUREMENT_ID` in `index.html` with your actual Google Analytics Measurement ID
    - Format: `G-XXXXXXXXXX`
 
-### App Store Links
+### Organizer call to action
 
-When your app is published, update the download buttons in `index.html`:
-
-```html
-<!-- App Store -->
-<a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="download-btn" id="app-store-btn">
-
-<!-- Google Play Store -->
-<a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="download-btn" id="play-store-btn">
-```
+Organizer buttons must link to `https://app.openseat.cc/login`. App Store and Play Store links are only for the optional OpenSeat Scanner and must not be presented as the way to create or manage events.
 
 ### Social Media Links
 
@@ -164,7 +156,7 @@ The website includes basic SEO elements:
 ## 🛠️ Maintenance
 
 ### Regular Updates
-- Update app store links when published
+- Keep organizer calls to action pointed at `https://app.openseat.cc/login`
 - Add social media links when accounts are created
 - Update content as needed
 - Monitor Google Analytics for insights
@@ -185,10 +177,10 @@ For deployment issues:
 
 1. **Set up Google Analytics** for tracking user behavior
 2. **Create social media accounts** and update links
-3. **Publish the app** and update store links
+3. **Publish OpenSeat Scanner** and keep store links separate from organizer calls to action
 4. **Set up email forwarding** for contact@openseat.cc
 5. **Monitor performance** and user engagement
 
 ---
 
-**Note:** All placeholder links currently show alerts. Replace them with actual URLs when the app and social media accounts are ready. 
+**Note:** Replace placeholder social links with actual URLs when the accounts are ready.

@@ -244,21 +244,6 @@
             display: none;
         }
 
-        /* Phone mockup only at desktop; never show below 1024px. */
-        @media (max-width: 1023px) {
-            .hero-visual.hero-col-visual {
-                display: none;
-            }
-        }
-
-        .hero-visual img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.12));
-        }
-
         @media (min-width: 1024px) {
             .hero {
                 align-items: stretch;
@@ -268,8 +253,7 @@
             }
 
             .hero-inner {
-                grid-template-columns: minmax(0, 1fr) auto;
-                column-gap: clamp(2rem, 4vw, 3.5rem);
+                grid-template-columns: minmax(0, 1fr);
                 row-gap: 0;
                 align-items: center;
                 justify-items: start;
@@ -284,17 +268,6 @@
                 width: 100%;
                 min-width: 0;
                 max-width: none;
-            }
-
-            .hero-visual.hero-col-visual {
-                display: block;
-                justify-self: end;
-            }
-
-            .hero-visual img {
-                max-width: min(320px, 28vw);
-                max-height: min(680px, 78vh);
-                width: auto;
             }
 
             .app-buttons {
@@ -421,21 +394,6 @@
             gap: 0.75rem;
             justify-content: center;
             flex-wrap: wrap;
-        }
-
-        .app-store-link {
-            display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .app-store-link:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        .app-store-link img {
-            height: 50px;
-            width: auto;
         }
 
         /* Problem/Solution Section */
@@ -1427,7 +1385,7 @@
                 <li><a href="#organizers">For Organizers</a></li>
                 <li><a href="#attendees">For Attendees</a></li>
                 <li><a href="#how">How It Works</a></li>
-<li><a href="get-started.html" class="nav-cta">Sell Tickets</a></li>
+<li><a href="https://app.openseat.cc/login" class="nav-cta">Organizer Login</a></li>
         </ul>
         <button class="mobile-menu" aria-label="Open menu">☰</button>
         </div>
@@ -1448,7 +1406,7 @@
             <li><a href="#organizers">For Organizers</a></li>
             <li><a href="#attendees">For Attendees</a></li>
             <li><a href="#how">How It Works</a></li>
-            <li><a href="get-started.html" class="nav-cta">Sell Tickets</a></li>
+            <li><a href="https://app.openseat.cc/login" class="nav-cta">Organizer Login</a></li>
         </ul>
     </div>
 
@@ -1459,7 +1417,7 @@
                 <div class="hero-col-text">
                     <div class="hero-content">
                         <h1 class="hero-tagline">
-                            Online Ticketing App for Events, Shows, Classes, and <span class="hero-tagline-accent">everything in between</span>.
+                            Online Ticketing for Events, Shows, Classes, and <span class="hero-tagline-accent">everything in between</span>.
                         </h1>
                         <h2 class="hero-cta-text">
                             Try for <span style="color: var(--primary);">free</span> today!<br>
@@ -1467,20 +1425,13 @@
                         </h2>
                         <p class="hero-disclaimer">*Payment processing fees apply.</p>
                         <div class="app-buttons">
-                            <a href="https://apps.apple.com/us/app/openseat-tickets/id6753200939" class="app-store-link" target="_blank" rel="noopener">
-                                <img src="assets/images/iOS_appstore.svg" alt="Download on the App Store" height="50" decoding="async">
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.openseat.openseat_ticketing" class="app-store-link" target="_blank" rel="noopener">
-                                <img src="assets/images/android_appstore.svg" alt="Get it on Google Play" height="50" decoding="async">
-                            </a>
+                            <a href="https://app.openseat.cc/login" class="btn btn-primary">Create your account</a>
+                            <a href="#how" class="btn btn-secondary">See how it works</a>
                         </div>
                     </div>
                     <aside class="hero-pledge">
                         <p class="hero-impact hero-impact-fadein">OpenSeat pledges 10% of platform fees to support local recovery programs fighting addiction 💚</p>
                     </aside>
-                </div>
-                <div class="hero-col-visual hero-visual" aria-hidden="true">
-                    <img src="assets/images/hero-phone-mockup.png" alt="" width="450" height="920" decoding="async">
                 </div>
             </div>
         </section>
@@ -1503,7 +1454,7 @@
                         OpenSeat
                     </h3>
                     <ul>
-                        <li>One system to create, sell, scan, refund, and reconcile</li>
+                        <li>One web platform to create, sell, refund, and reconcile</li>
                         <li>Live door view so you always know what’s happening</li>
                         <li>Handle full or partial refunds in seconds</li>
                         <li>No contracts. Works for one-offs or full calendars</li>
@@ -1543,7 +1494,7 @@
 
             <div class="showcase-card">
                 <div class="showcase-content">
-                    <h3>Create an Event in Minutes</h3>
+                    <h3>Create an Event in Your Browser</h3>
                     <p>
                         Drop in the basics, add your lineup, and publish.
                         Use our description helper when you want it, or write it yourself.
@@ -1559,7 +1510,7 @@
                         </li>
                         <li>
                             <span class="icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Polish a draft in one tap
+                            Polish a draft in one click
                         </li>
                         <li>
                             <span class="icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1610,7 +1561,7 @@
 
             <div class="showcase-card">
                 <div class="showcase-content">
-                    <h3>Refunds and Reporting at Your Fingertips</h3>
+                    <h3>Refunds and Reporting in One Console</h3>
                     <p>
                         Handle full or partial refunds yourself, right when you need to.
                         Track orders, see breakdowns, and close out the night with clean numbers.
@@ -1636,17 +1587,17 @@
                 </div>
                 <div class="phone-frame">
                     <div class="phone-screen">
-                        <img src="assets/images/event_refund_screenshot.png" alt="In-app refunds and order management" loading="lazy" decoding="async">
+                        <img src="assets/images/event_refund_screenshot.png" alt="OpenSeat refunds and order management" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
 
             <div class="showcase-card reverse">
                 <div class="showcase-content">
-                    <h3>Built-in Scanning</h3>
+                    <h3>Optional Ticket Scanning</h3>
                     <p>
-                        Validate tickets instantly and flag issues right away: duplicates, wrong event, refunded.
-                        Your door staff stays focused on moving the line.
+                        Door staff can install OpenSeat Scanner to validate tickets and flag duplicates, wrong-event tickets, and refunds.
+                        If you do not need scanning, simply admit guests your usual way.
                     </p>
                     <ul class="showcase-features">
                         <li>
@@ -1696,7 +1647,7 @@
                             <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
                         </div>
                         <div class="feature-item-content">
-                            <h4>Sell Anywhere (Web + Mobile)</h4>
+                        <h4>Sell from the Web</h4>
                             <p>Fans buy from any device. No forced downloads, no weird steps, no lost sales.</p>
                         </div>
                     </div>
@@ -1716,7 +1667,7 @@
                             <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
                         </div>
                         <div class="feature-item-content">
-                            <h4>In-App Refunds</h4>
+                            <h4>Organizer-console Refunds</h4>
                             <p>Process full or partial refunds in seconds, not days</p>
                         </div>
                     </div>
@@ -1728,7 +1679,7 @@
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Built-in QR scanner with instant validation
+                            Optional OpenSeat Scanner with instant validation
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1745,7 +1696,7 @@
                 <div class="platform-card" id="attendees">
                     <div class="platform-card-header">
                         <h3>For Event Goers</h3>
-                        <p>A clean experience from purchase to entry. Buy on the web or app, get tickets instantly, and walk in with one scan.</p>
+                        <p>A clean experience from purchase to entry. Buy on the web, receive tickets by email, and show the QR code at the door.</p>
                     </div>
 
                     <div class="feature-item">
@@ -1754,7 +1705,7 @@
                         </div>
                         <div class="feature-item-content">
                             <h4>Buy in Seconds</h4>
-                            <p>Purchase tickets on the web or mobile app. No account required for checkout.</p>
+                            <p>Purchase tickets on the web. No account or app download is required.</p>
                         </div>
                     </div>
 
@@ -1781,15 +1732,15 @@
                     <ul class="check-list">
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            All tickets on your phone, always accessible
+                            QR tickets delivered directly by email
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Complete ticket history with past events
+                            No attendee account required
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
-                            Clear scanned/refunded status on tickets
+                            Clear ticket and refund details in each email
                         </li>
                         <li>
                             <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1860,7 +1811,7 @@
                                     <div class="step-number">3</div>
                                 </div>
                                 <h3>Manage & Monitor</h3>
-                                <p>Track sales, process refunds, and view financial reports. All from your phone.</p>
+                                <p>Track sales, process refunds, and view financial reports from your browser.</p>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/Metrics.png')">
                                 <div class="step-card-back-content">
@@ -1880,7 +1831,7 @@
                                     <div class="step-number">4</div>
                                 </div>
                                 <h3>Run Your Event</h3>
-                                <p>Scan tickets at the door and watch attendance unfold in real-time.</p>
+                                <p>Optionally scan tickets at the door and watch attendance update in real time.</p>
                             </div>
                             <div class="step-card-back" style="background-image: url('assets/images/gate_screenshot.png')">
                                 <div class="step-card-back-content">
