@@ -1,0 +1,12 @@
+# macOS / Windows metadata (do not commit — can leak local directory layout)
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

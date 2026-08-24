@@ -39,7 +39,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -55,36 +55,54 @@
             --text: #0F172A;
             --text-secondary: #64748B;
             --muted: #64748B;
-            --bg: #FFFFFF;
-            --bg-alt: #F8FAFC;
+            --bg: #FFF8E7;
+            --bg-alt: #FFFFFF;
             --border: #E2E8F0;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Nunito', sans-serif;
             color: var(--text);
             line-height: 1.6;
             background: var(--bg);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+        }
+
+        h3, h4, h5, h6 {
+            font-weight: 500;
         }
 
         /* Nav */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            padding: max(1rem, env(safe-area-inset-top, 0px)) 1.25rem 0;
+            background: transparent;
+            pointer-events: none;
         }
 
         .nav-content {
-            max-width: 1280px;
+            pointer-events: auto;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 0.75rem 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--bg);
+            border-radius: 9999px;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.7);
         }
 
         .logo {
@@ -95,7 +113,7 @@
         }
 
         .logo img {
-            height: 32px;
+            height: 28.8px;
         }
 
         .nav-links {
@@ -120,8 +138,8 @@
         .nav-cta {
             background: var(--primary);
             color: white !important;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.675rem 1.26rem;
+            border-radius: 9999px;
             font-size: 0.875rem;
         }
 
@@ -143,7 +161,7 @@
 
         .page-header h1 {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 1rem;
             color: var(--text);
         }
@@ -199,14 +217,14 @@
 
         .tos-content h2 {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             margin: 2rem 0 1rem;
             color: var(--text);
         }
 
         .tos-content h3 {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 500;
             margin: 1.5rem 0 0.75rem;
             color: var(--text);
         }
@@ -380,7 +398,7 @@
                 <li><a href="index.html#organizers">For Organizers</a></li>
                 <li><a href="index.html#attendees">For Attendees</a></li>
                 <li><a href="index.html#how">How It Works</a></li>
-                <li><a href="https://app.openseat.cc/login" class="nav-cta">Organizer Login</a></li>
+                <li><a href="get-started.html" class="nav-cta">Get Started</a></li>
             </ul>
             <button class="mobile-menu">☰</button>
         </div>
@@ -406,7 +424,7 @@
             </div>
 
             <p>Thank you for choosing OpenSeat! These Organizer Terms of Service ("Terms") form a legally binding agreement between <strong>you</strong> ("Organizer," "you," or "your") and <strong>OpenSeat LLC</strong> ("OpenSeat," "we," "us," or "our").</p>
-            <p>These Terms apply when you use OpenSeat to create, promote, or manage events and to sell tickets through our platform (the "Platform"), including via our organizer console, optional scanner app, or any other tools, portals, or checkout interfaces we provide.</p>
+            <p>These Terms apply when you use OpenSeat to create, promote, or manage events and to sell tickets through our platform (the "Platform"), including via the web organizer console, checkout, or any other tools, portals, or interfaces we provide.</p>
             <p>By creating an event or accessing any organizer tools, you agree to both these Terms and our Privacy Policy, which explains how we collect, store, and use personal and business information provided by you and your attendees.</p>
 
             <h2>1. Organizer Access & Eligibility</h2>
@@ -614,7 +632,7 @@
             </div>
 
             <p>Welcome to OpenSeat! These Ticket Buyer Terms of Service ("Terms") form a legally binding agreement between <strong>you</strong> ("Buyer," "you," or "your") and <strong>OpenSeat LLC</strong> ("OpenSeat," "we," "us," or "our").</p>
-            <p>These Terms apply whenever you purchase, access, or use a ticket through our platform (the "Platform"), including through our website, checkout.openseat.cc, or any other purchasing interface provided by OpenSeat.</p>
+            <p>These Terms apply whenever you purchase, access, or use a ticket through our platform (the "Platform"), including through checkout.openseat.cc or any other purchasing interface provided by OpenSeat.</p>
             <p>By purchasing or using a ticket through OpenSeat, you agree to both these Terms and our Privacy Policy, which explains how we collect, use, and protect your personal information.</p>
 
             <h2>1. OpenSeat's Role</h2>
@@ -635,17 +653,16 @@
             <p>You acknowledge and agree that OpenSeat is not responsible for any acts, omissions, claims, or liabilities related to the event itself — including injuries, cancellations, refund disputes, or venue issues. All such matters are the sole responsibility of the Organizer.</p>
 
             <h2>2. Buying Tickets & Accessing Them</h2>
-            <p>You can purchase tickets through OpenSeat's web checkout:</p>
-            <h3>2.1 Purchasing on the Web (No Account Required at Checkout)</h3>
-            <p>If you buy a ticket through the web checkout:</p>
+            <p>Tickets are purchased through guest web checkout. There is no buyer account and no in-app wallet.</p>
+            <h3>2.1 Purchasing on the Web (No Account Required)</h3>
+            <p>If you buy a ticket through web checkout:</p>
             <ul>
                 <li>You must provide a valid <strong>email address</strong>.</li>
-                <li>Your ticket will be linked to this identifier.</li>
-                <li>Your QR ticket and receipt are delivered to the <strong>same email</strong>.</li>
+                <li>Your ticket is tied to that purchase and email.</li>
+                <li>You do not need to create an OpenSeat account.</li>
             </ul>
-            <p>No attendee account or mobile app is required to complete checkout.</p>
             <h3>2.2 Ticket Delivery</h3>
-            <p>All tickets are delivered digitally by email. Present the emailed QR code at the event when requested by the Organizer.</p>
+            <p>All tickets are delivered digitally. After purchase you receive a QR ticket by email and on the checkout success page. Present that QR at the door.</p>
 
             <h2>3. Email Communications</h2>
             <p>We may send you emails for:</p>
@@ -818,7 +835,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="assets/images/new_logo.svg" alt="OpenSeat">
-                <p>Web-first ticketing for organizers, with optional ticket scanning at the door.</p>
+                <p>The complete ticketing platform. Create, sell, scan, refund, and monitor from one app.</p>
                 <div class="social-links">
                     <a href="https://twitter.com/openseat" aria-label="Twitter">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -861,20 +878,27 @@
     </footer>
 
     <script>
-        function showTab(tabId) {
-            // Hide all content
+        function showTab(tabId, evt) {
             document.querySelectorAll('.tos-content').forEach(content => {
                 content.classList.remove('active');
             });
-            // Remove active from all buttons
             document.querySelectorAll('.tos-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            // Show selected content
             document.getElementById(tabId).classList.add('active');
-            // Add active to clicked button
-            event.target.classList.add('active');
+            const clicked = evt && evt.target;
+            if (clicked && clicked.classList) {
+                clicked.classList.add('active');
+            } else {
+                document.querySelectorAll('.tos-tab-btn').forEach(btn => {
+                    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf(tabId) !== -1) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
         }
+        if (location.hash === '#buyer') showTab('buyer');
     </script>
 </body>
 </html>
+
