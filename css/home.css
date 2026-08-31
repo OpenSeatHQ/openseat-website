@@ -79,6 +79,11 @@
     letter-spacing: -0.03em;
 }
 
+.hero-kicker {
+    display: block;
+    color: var(--primary);
+}
+
 .hero-lede {
     max-width: 42ch;
     margin-top: 16px;
