@@ -1,17 +1,15 @@
 # OpenSeat marketing website
 
-Static marketing and legal pages for `https://openseat.cc`, hosted with GitHub Pages.
+Static GitHub Pages site for `https://openseat.cc`.
 
-The site's primary job is to explain OpenSeat to event organizers and send them to the organizer console at `https://app.openseat.cc/login`.
+The homepage explains OpenSeat as web ticketing: a hero with a desktop-screenshot placeholder, an About section, and How it works. Organizers use `https://app.openseat.cc`. Guests buy tickets from checkout links; there is no attendee app.
 
 ## Product boundaries
 
 - `openseat.cc`: public marketing and legal pages
-- `app.openseat.cc`: organizer account and ticketing platform
-- `checkout.openseat.cc`: guest checkout; no attendee account or app required
-- OpenSeat Scanner: optional iOS/Android door-staff scanner
-
-Do not use App Store or Play Store links as organizer calls to action. Organizers use the web console; store links are only appropriate when specifically describing the optional scanner.
+- `app.openseat.cc`: organizer console
+- Guest checkout: shareable links (no attendee account or app)
+- OpenSeat Scanner: optional door-staff app (not advertised on the homepage)
 
 ## Local preview
 
