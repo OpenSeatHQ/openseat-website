@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRN6K1R4JL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BRN6K1R4JL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Add UTM tags to your OpenSeat checkout link to see which post, story, email or flyer actually sold your tickets.">
+    <link rel="canonical" href="https://openseat.cc/blog/track-ticket-buyers-with-utm-links/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://openseat.cc/blog/track-ticket-buyers-with-utm-links/">
+    <meta property="og:title" content="How to Track Where Your Ticket Buyers Come From with UTM Links - OpenSeat">
+    <meta property="og:description" content="Add UTM tags to your OpenSeat checkout link to see which post, story, email or flyer actually sold your tickets.">
+    <meta property="og:image" content="https://openseat.cc/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="OpenSeat">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://openseat.cc/blog/track-ticket-buyers-with-utm-links/">
+    <meta name="twitter:title" content="How to Track Where Your Ticket Buyers Come From with UTM Links - OpenSeat">
+    <meta name="twitter:description" content="Add UTM tags to your OpenSeat checkout link to see which post, story, email or flyer actually sold your tickets.">
+    <meta name="twitter:image" content="https://openseat.cc/assets/images/og-image.png">
+
+    <title>How to Track Where Your Ticket Buyers Come From with UTM Links - OpenSeat</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/images/Official.png">
+    <link rel="apple-touch-icon" href="/assets/images/Official.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Primary">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <img src="/assets/images/new_logo.svg" alt="OpenSeat">
+            </a>
+            <ul class="nav-actions">
+                <li><a class="nav-link" href="/#about">About</a></li>
+                <li><a class="nav-link" href="/blog/" aria-current="page">Blog</a></li>
+                <li><a class="btn btn-primary" href="https://app.openseat.cc">Launch App</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-main" id="content">
+        <a class="back-link" href="/blog/">&larr; All posts</a>
+
+        <article>
+            <header class="article-header">
+                <h1>How to Track Where Your Ticket Buyers Come From with UTM Links</h1>
+                <time datetime="2026-10-29">Oct 29, 2026</time>
+            </header>
+
+            <div class="article-body">
+                <h2>Why your checkout link needs a UTM tag</h2>
+                <p>If you post the same plain checkout link everywhere, you can see that tickets sold, but not which post, story, email or flyer sold them. A UTM link fixes that: it's your normal OpenSeat checkout link with a few short tags added to the end, and those tags tell your analytics exactly where each visitor came from.</p>
+                <p>With UTM links you can answer questions like:</p>
+                <ul>
+                    <li>Did my Instagram Reel or my Facebook event drive more checkout visits?</li>
+                    <li>Was the newsletter worth sending?</li>
+                    <li>Did the flyer QR code at the coffee shop get scanned at all?</li>
+                </ul>
+                <p>Knowing this tells you where to spend your limited promo time on the next event.</p>
+
+                <h2>Example: an Instagram post</h2>
+                <p>Say you're promoting your Fall Oktoberfest on Instagram.</p>
+                <p><strong>Without a UTM tag</strong>, you'd paste your regular checkout link:</p>
+                <div class="url-block">https://openseat.cc/e/fall-oktoberfest</div>
+                <p>Visitors from that post blend in with everyone else. Your analytics might group them under "instagram.com" or even "direct" (mobile apps often strip where a click came from), so you can't tell this post apart from your bio link or a friend's share.</p>
+                <p><strong>With a UTM tag</strong>, you'd paste this instead:</p>
+                <div class="url-block">https://openseat.cc/e/fall-oktoberfest<span class="utm">?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=fall_oktoberfest_2026&amp;utm_content=lineup_reel</span></div>
+                <p>It still opens the exact same checkout page. But now your analytics can show you exactly how many people arrived from the lineup Reel, separate from every other link you've shared.</p>
+                <p class="article-note">Use your real event link in place of the example openseat.cc/e/fall-oktoberfest link throughout this article.</p>
+
+                <h2>Before you start</h2>
+                <p>You'll need two things:</p>
+                <ul>
+                    <li><strong>Your event's checkout link.</strong> Copy it from your OpenSeat event page.</li>
+                    <li><strong>A list of where you're promoting.</strong> Instagram, Facebook, TikTok, your email list, partner shares, posters. Each place gets its own UTM link.</li>
+                </ul>
+                <p>The tool you'll use is Google's free <a href="https://ga-dev-tools.google/ga4/campaign-url-builder/">Campaign URL Builder</a>. No account or login is needed to build links.</p>
+
+                <h2>How to build a UTM link</h2>
+                <ol>
+                    <li><strong>Open the builder.</strong> Go to <a href="https://ga-dev-tools.google/ga4/campaign-url-builder/">ga-dev-tools.google/ga4/campaign-url-builder</a> and stay on the <strong>Web</strong> tab.</li>
+                    <li><strong>Paste your checkout link</strong> into <strong>Website URL</strong>. Example: <code>https://openseat.cc/e/fall-oktoberfest</code></li>
+                    <li><strong>Fill in Campaign source</strong> (required). This is <em>where</em> the link lives. Example: <code>instagram</code></li>
+                    <li><strong>Fill in Campaign medium.</strong> This is the <em>type</em> of channel. Example: <code>social</code></li>
+                    <li><strong>Fill in Campaign name.</strong> This is the <em>event or promo push</em>. Example: <code>fall_oktoberfest_2026</code></li>
+                    <li><strong>Optional: fill in Campaign content.</strong> Use this to tell apart two links in the same place. Example: <code>lineup_reel</code> vs <code>bio_link</code></li>
+                    <li><strong>Skip the rest.</strong> Campaign ID and Campaign term are mostly for paid ads. Leave them blank.</li>
+                    <li><strong>Copy your link.</strong> The finished link appears at the bottom of the page as you type. Click <strong>Copy URL</strong> and paste it into your post.</li>
+                </ol>
+                <p>Repeat for each place you promote. It takes about 30 seconds per link once you have the hang of it.</p>
+
+                <h3>What each field means</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Field</th><th scope="col">What it answers</th><th scope="col">Example values</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Campaign source</td><td>Where did they click?</td><td>instagram, facebook, tiktok, newsletter, poster</td></tr>
+                            <tr><td>Campaign medium</td><td>What kind of channel?</td><td>social, email, qr, partner, paid_social</td></tr>
+                            <tr><td>Campaign name</td><td>Which event or push?</td><td>fall_oktoberfest_2026, comedy_night_nov</td></tr>
+                            <tr><td>Campaign content</td><td>Which specific post or spot?</td><td>lineup_reel, bio_link, story_countdown</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Copy-ready setups for common channels</h2>
+                <p>Use the same campaign name for every link about one event, so all its traffic groups together. Here's a full set for one event:</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Where you're posting</th><th scope="col">Source</th><th scope="col">Medium</th><th scope="col">Content</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Instagram post or Reel</td><td>instagram</td><td>social</td><td>lineup_reel</td></tr>
+                            <tr><td>Instagram bio link</td><td>instagram</td><td>social</td><td>bio_link</td></tr>
+                            <tr><td>Instagram Story link sticker</td><td>instagram</td><td>social</td><td>story_sticker</td></tr>
+                            <tr><td>Facebook event or post</td><td>facebook</td><td>social</td><td>event_page</td></tr>
+                            <tr><td>TikTok bio link</td><td>tiktok</td><td>social</td><td>bio_link</td></tr>
+                            <tr><td>Email newsletter</td><td>newsletter</td><td>email</td><td>announcement</td></tr>
+                            <tr><td>Poster or flyer QR code</td><td>poster</td><td>qr</td><td>coffee_shop</td></tr>
+                            <tr><td>Venue, sponsor or partner share</td><td>the partner's name, e.g. promotepdx</td><td>partner</td><td>listing</td></tr>
+                            <tr><td>Paid Instagram or Facebook ad</td><td>instagram or facebook</td><td>paid_social</td><td>the ad's name</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>For QR codes, build the UTM link first, then turn that full link into a QR code. Use a different <code>utm_content</code> for each poster location to see which spots actually get scanned.</p>
+
+                <h2>Tips and common mistakes</h2>
+                <ul>
+                    <li><strong>Stick to lowercase.</strong> UTM values are case-sensitive, so <code>Instagram</code> and <code>instagram</code> show up as two different sources.</li>
+                    <li><strong>Use underscores, not spaces.</strong> <code>fall_oktoberfest_2026</code> reads cleanly; spaces turn into <code>%20</code> in the link.</li>
+                    <li><strong>Pick names once and reuse them.</strong> Keep a simple note or spreadsheet of the links you've made so you spell things the same way every time.</li>
+                    <li><strong>Never use UTM links on your own website.</strong> Tagging links between your own pages overwrites where the visitor originally came from.</li>
+                    <li><strong>Shorten long links if you like.</strong> A link shortener is fine for printed materials or captions, as long as you shorten the full UTM link, not the plain one.</li>
+                    <li><strong>Test before you post.</strong> Paste the finished link into your browser and confirm it opens your checkout page.</li>
+                </ul>
+
+                <h2>Where to see your results</h2>
+                <p>If your event page is connected to Google Analytics 4:</p>
+                <ol>
+                    <li>Open Google Analytics and go to <strong>Reports &gt; Acquisition &gt; Traffic acquisition</strong>.</li>
+                    <li>Change the table's main column to <strong>Session source / medium</strong> to compare channels, such as <code>instagram / social</code> vs <code>newsletter / email</code>.</li>
+                    <li>Switch it to <strong>Session campaign</strong> to see totals for each event.</li>
+                    <li>To compare individual posts, add <strong>Session manual ad content</strong> as a secondary column. That's where your <code>utm_content</code> values show up.</li>
+                </ol>
+                <p>Check back a few days after posting. Compare the channels at the end of each event to see where your audience actually comes from, then put more effort there next time.</p>
+
+                <h2>FAQ</h2>
+                <div class="faq">
+                    <h3>Will a UTM link change what buyers see?</h3>
+                    <p>No. It opens the same checkout page. The tags just ride along in the address bar.</p>
+                    <h3>Do I need a new link for every post?</h3>
+                    <p>You need a new link for every place you want to measure separately. If you only care about Instagram as a whole, one Instagram link is enough. If you want to compare a Reel to a Story, give each its own <code>utm_content</code>.</p>
+                    <h3>Can I reuse links for my next event?</h3>
+                    <p>Make new ones with a new campaign name, such as <code>spring_market_2027</code>. That keeps each event's results separate.</p>
+                    <h3>Why do some visits still show as "direct"?</h3>
+                    <p>Some apps and copied links drop referral info. That's exactly why UTM tags help: visits from a tagged link are credited correctly even when the app hides where the click came from.</p>
+                </div>
+            </div>
+
+            <section class="article-cta" aria-labelledby="cta-heading">
+                <h2 id="cta-heading">Ready to sell tickets with OpenSeat?</h2>
+                <a class="btn btn-primary btn-lg" href="https://app.openseat.cc">Launch App</a>
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img src="/assets/images/new_logo.svg" alt="OpenSeat">
+                </a>
+                <p>There's always a seat for you.</p>
+                <div class="social-links">
+                    <a href="https://x.com/OpenSeatHQ" aria-label="OpenSeat on X">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/openseatofficial/" aria-label="OpenSeat on Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+                        </svg>
+                    </a>
+                    <a href="http://www.tiktok.com/@openseathq" aria-label="OpenSeat on TikTok">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h2>Product</h2>
+                    <ul>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#how">How it works</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a href="https://app.openseat.cc">Launch App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2>Legal</h2>
+                    <ul>
+                        <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="mailto:contact@openseat.cc">contact@openseat.cc</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2026 OpenSeat. All rights reserved.</p>
+    </footer>
+    <script src="/js/analytics.js"></script>
+</body>
+</html>
