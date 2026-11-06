@@ -27,7 +27,7 @@
         d.textContent = i % 10;
         strip.appendChild(d);
       }
-      strip.style.transitionDelay = (450 + card * 120) + 'ms';
+      strip.style.transitionDelay = (2350 + card * 120) + 'ms';
       strip.dataset.to = 'translateY(' + (-(stops - 1) / stops * 100) + '%)';
       cell.className = 'odo-digit';
       cell.appendChild(strip);
