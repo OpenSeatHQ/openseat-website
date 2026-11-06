@@ -2,7 +2,7 @@
 
 Static GitHub Pages site for `https://openseat.cc`.
 
-The homepage explains OpenSeat as web ticketing: a hero with a desktop-screenshot placeholder, an About section, and How it works. Organizers use `https://app.openseat.cc`. Guests buy tickets from checkout links; there is no attendee app.
+The homepage explains OpenSeat as web ticketing: a hero with an HTML mockup of the organizer dashboard (stats roll in once on load, see `js/hero.js`), an About section, and How it works. Organizers use `https://app.openseat.cc`. Guests buy tickets from checkout links; there is no attendee app.
 
 ## Product boundaries
 

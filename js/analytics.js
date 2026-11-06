@@ -6,7 +6,7 @@ document.addEventListener('click', function (e) {
   gtag('event', 'launch_app_click', {
     link_url: link.href,
     link_text: (link.textContent || '').trim().slice(0, 50),
-    placement: link.closest('header, nav') ? 'nav' : link.closest('footer') ? 'footer' : 'body',
+    placement: link.closest('nav') ? 'nav' : link.closest('.hero') ? 'hero' : link.closest('footer') ? 'footer' : 'body',
     transport_type: 'beacon'
   });
 });
